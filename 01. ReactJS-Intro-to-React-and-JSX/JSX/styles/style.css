@@ -1,0 +1,15 @@
+article {
+    padding: 5px 15px;
+    margin: 15px 10px;
+}
+section {
+    font-style: italic;
+}
+body{
+    background-color: #dcddd1;
+    color: #000000;
+}
+.site-footer{
+    font-style: italic;
+
+}
