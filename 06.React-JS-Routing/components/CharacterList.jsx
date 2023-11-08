@@ -5,11 +5,15 @@ const url = 'https://swapi.dev/api/';
 export default function CharactersList() {
   const [characters, setCharacters] = useState([]);
   useEffect(() => {
-    fetch(`${url}` + 'people')
+    const abortCtlr = new AbortController();
+    fetch(`${url}` + 'people',{signal: abortCtlr.signal})
       .then((response) => response.json())
       .then((data) => {
         setCharacters(data.results);
       });
+      return ()=>{
+        abortCtlr.abort();
+      }
   }, []);
   return (
     <>
