@@ -1,5 +1,5 @@
 export default function Else(){
     return(
-        <h2>Something Else</h2>
+        <h2>GitHub Commit Test</h2>
     )
 }
