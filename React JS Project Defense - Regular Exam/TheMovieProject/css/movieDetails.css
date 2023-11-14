@@ -1,4 +1,4 @@
-.movie-details-container{
+.movie-details-container {
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
@@ -54,7 +54,8 @@ h4 {
     color: #9e7b07;
     font-family: Merriweather;
 }
-.movie-comments-container{
+
+.movie-comments-container {
     border-radius: 10px;
     background-color: rgba(107, 107, 107, 0.3);
     padding: 1em;
@@ -65,29 +66,43 @@ h4 {
     width: 100%;
 
 }
-.movie-comments-container .comments{
+
+.movie-comments-container .comments {
     display: flex;
     flex-direction: row;
+    justify-content: center;
     align-items: center;
     flex-wrap: wrap;
     width: 100%;
-    gap:0.5em;
+    gap: 0.5em;
 }
-.movie-comments-container .comments li{
-    display: flex;
-    flex-direction: row;
-    align-items: flex-start;
-    flex-wrap: wrap;
-    flex-grow: 1;
+
+.movie-comments-container .comments li {
+    width: 45%;
     border-radius: 10px;
     background-color: rgba(107, 107, 107, 0.3);
-    padding: 1em;
     color: rgb(216, 216, 216);
     border: 1px solid rgb(167, 167, 167);
     text-align: left;
     padding: 0.5em;
     display: inline;
 }
-.movie-comments-container .comments li p{
-    padding:1em;
+
+.comment-comment {
+    margin: 1em 0;
+}
+
+.comment-username {
+    margin: 0.2em 0;
+}
+
+.comments li p span {
+    text-decoration: underline;
+    color: #4796ff;
+}
+
+hr {
+    height: 1px;
+    background-color: rgb(104, 104, 104);
+    border: none;
 }

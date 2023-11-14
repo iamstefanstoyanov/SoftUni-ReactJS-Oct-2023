@@ -1,18 +1,22 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { getOneMovie } from '../services/moviesService';
+import { getCurrentMovieComments } from '../services/commentsService';
 
 import Spinner from './Spinner';
 
 export default function MovieDetails() {
   const { id } = useParams();
   const [movieDetails, setMovieDetails] = useState([]);
+  const [movieComments, setMovieComments] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     setIsLoading(true);
     getOneMovie(id)
-      .then(setMovieDetails)
+      .then(setMovieDetails);
+    getCurrentMovieComments(id)
+      .then(setMovieComments)
       .finally(() => setIsLoading(false));
   }, [id]);
 
@@ -72,42 +76,19 @@ export default function MovieDetails() {
               </svg>
             </div>
           </div>
-          <div className='movie-comments-container'>
+          {!movieComments.length==0?<div className='movie-comments-container'>
             <h4>Comments</h4>
             <ul className='comments'>
-              <li>
-                <p>Username....</p>
-                <hr />
-                <p>Comment....</p>
-              </li>
-              <li>
-                <p>Username....</p>
-                <hr />
-                <p>Comment....</p>
-              </li>
-              <li>
-                <p>Username....</p>
-                <hr />
-                <p>Comment....</p>
-              </li><li>
-                <p>Username....</p>
-                <hr />
-                <p>Comment....</p>
-              </li><li>
-                <p>Username....</p>
-                <hr />
-                <p>Comment....</p>
-              </li><li>
-                <p>Username....</p>
-                <hr />
-                <p>Comment....</p>
-              </li><li>
-                <p>Username....</p>
-                <hr />
-                <p>Comment....</p>
-              </li>
+              {movieComments.map((c) => (
+                <li key={c.id}>
+                  <p className='comment-username'><span>User:</span> {c.username}</p>
+                  <hr />
+                  <p className='comment-comment'><span>Comment:</span> {c.comment}</p>
+                </li>
+              ))}
             </ul>
-          </div>
+          </div> :null }
+          
         </>
       )}
     </>
