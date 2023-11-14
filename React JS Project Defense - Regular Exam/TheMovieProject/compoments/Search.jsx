@@ -1,7 +1,9 @@
 import { useState, useEffect } from 'react';
-import MoviesList from './MoviesList';
 import { Pagination } from '@mui/material';
 
+import { searchForMovies } from '../services/moviesService';
+
+import MoviesList from './MoviesList';
 import Spinner from './Spinner';
 
 export default function Search() {
@@ -11,28 +13,16 @@ export default function Search() {
   const [page, setPage] = useState(1);
   const [isLoading, setIsLoading] = useState(false);
 
-  const url = `https://api.themoviedb.org/3/search/movie?query=${input}&include_adult=false&language=en-US&&page=${page}`;
-  const options = {
-    method: 'GET',
-    headers: {
-      accept: 'application/json',
-      Authorization:
-        'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI0NTIzYWEzYTRlOTRhYzhkYTQwMDk1Mzk2ZDQ3MDZkMiIsInN1YiI6IjY1MzhmYWQyZjQ5NWVlMDBmZjY2M2U4OCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.IzQpk27slS-MSxretzQENo36fQajZg1E14HSlXkTVOM',
-    },
-  };
   useEffect(() => {
     setIsLoading(true);
-
-    fetch(url, options)
-      .then((response) => response.json())
+    searchForMovies(input,page)
       .then((data) => {
         setMoives(Object.values(data.results));
         setTotalPages(data.total_pages);
         window.scrollTo(0, 0);
       })
-      .catch((error) => console.log(error))
       .finally(() => setIsLoading(false));
-  }, [url]);
+  }, [input,page]);
   const handleSubmit = (value) => {
     setInput(value);
   };

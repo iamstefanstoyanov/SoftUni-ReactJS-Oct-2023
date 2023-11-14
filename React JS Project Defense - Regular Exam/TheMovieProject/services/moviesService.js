@@ -12,4 +12,8 @@ export const getAllMovies = async (page) => {
   return Object.values(data.results);
 };
 
-
+export const searchForMovies = async(input,page)=>{
+    const url = `https://api.themoviedb.org/3/search/movie?query=${input}&include_adult=false&language=en-US&&page=${page}`;
+    const data =await(await fetch(url, options)).json();
+    return data ;
+}
