@@ -10,7 +10,7 @@ export default function Navbar() {
       </div>
       <div className='navbar-main'>
         <div className='logo'>
-          <img className='logo_png' src='/movie_logo.png' />
+          <img className='logo_png' src='./images/movie_logo.png' />
           <span className='logo-text'>The Movie Site</span>
         </div>
         <ul className='top-navbar-btns'>

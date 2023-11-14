@@ -24,7 +24,7 @@
 .background-image {
   height: 100%;
   background-size: contain;
-  background-image: url('../public/ribbon.png');
+  background-image: url('../images/ribbon.png');
   position: absolute;
   width: 400%;
   animation: slideshow 100s linear infinite;
