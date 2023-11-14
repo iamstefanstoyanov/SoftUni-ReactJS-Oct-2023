@@ -1,44 +1,22 @@
 import { useEffect, useState } from 'react';
-import Spinner from './Spinner';
 import { useParams } from 'react-router-dom';
+import { getOneMovie } from '../services/moviesService';
+
+import Spinner from './Spinner';
 
 export default function MovieDetails() {
+
   const { id } = useParams();
   const [movieDetails, setMovieDetails] = useState([]);
-/*   const [movieComments, setMovieComments] = useState([]); */
   const [isLoading, setIsLoading] = useState(false);
-  const url = `https://api.themoviedb.org/3/movie/${id}?language=en-US`;
-/*   const url2 = `http://localhost:3030/jsonstore/comments/${id}`; */
-  const options = {
-    method: 'GET',
-    headers: {
-      accept: 'application/json',
-      Authorization:
-        'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI0NTIzYWEzYTRlOTRhYzhkYTQwMDk1Mzk2ZDQ3MDZkMiIsInN1YiI6IjY1MzhmYWQyZjQ5NWVlMDBmZjY2M2U4OCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.IzQpk27slS-MSxretzQENo36fQajZg1E14HSlXkTVOM',
-    },
-  };
- /*  const options2 = {
-    method: 'GET',
-    headers: {
-      accept: 'application/json',
-    },
-  }; */
+  
   useEffect(() => {
     setIsLoading(true);
-
-    fetch(url, options)
-      .then((response) => response.json())
+    getOneMovie(id)
       .then(setMovieDetails)
-      .catch((error) => console.log(error))
-
-/*     fetch(url2, options2)
-      .then((response) => response.json())
-      .then((data) => {
-        setMovieComments(data.comment);
-      })
-      .catch((error) => console.log(error)) */
       .finally(() => setIsLoading(false));
   }, [id]);
+
   return (
     <>
       <h1>Movie Details</h1>
