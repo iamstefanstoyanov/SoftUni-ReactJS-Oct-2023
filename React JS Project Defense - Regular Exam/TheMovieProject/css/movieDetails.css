@@ -1,0 +1,51 @@
+.movie-details-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    gap: 1em;
+    border-radius: 10px;
+    box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.3);
+    background-color: rgba(107, 107, 107, 0.3);
+    padding: 0.5em;
+    margin: 0.5em 0;
+    width: 100%;
+    color: rgb(216, 216, 216);
+
+}
+
+.movie-details-img {
+    width: 250px;
+}
+
+.movie-details-info {
+    padding: 2em;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.movie-details-info p span {
+    text-decoration: underline;
+    color: #4796ff;
+}
+
+.movie-details-container .movie-details-btns {
+    margin-left: auto;
+
+}
+
+.movie-details-container .icon-add-to-watchlist {
+    fill: rgb(160, 160, 160);
+    width: 5em;
+}
+
+.icon-add-to-watchlist:hover {
+    fill: rgb(219, 219, 219);
+}
+
+.prodCompanies img {
+    display: inline;
+    margin-right: 1em;
+    height: 1.5em;
+    width: auto;
+}

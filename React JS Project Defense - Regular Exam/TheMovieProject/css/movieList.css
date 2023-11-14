@@ -1,0 +1,58 @@
+.movies-list-container {
+    padding: 4em;
+    width: 100%;
+    color: rgb(216, 216, 216);
+  }
+  
+  .movies-list-wrap {
+    display: flex;
+    flex-direction: row;
+    justify-content:flex-start;
+    gap: 1em;
+    border-radius: 10px;
+    box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.3);
+    background-color: rgba(107, 107, 107, 0.3);
+    padding: 0.5em;
+    margin-top: 0.5em;
+  }
+  
+
+  .poster-small {
+    width: 80px;
+  }
+  
+  .movie-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 80%;
+  }
+  
+  
+  .movie-list-btns {
+    display: flex;
+    flex-direction: column;
+    gap:1em;
+    justify-content: space-between;
+    align-items:flex-end;
+    margin-left: auto; 
+  }
+  .movie-list-btns .card-btn{
+    font-size: 0.8em;
+  }
+  .icon-add-to-watchlist {
+    fill: rgb(160, 160, 160);
+    width: 3em;
+  }
+  
+  .icon-add-to-watchlist:hover {
+    fill: rgb(219, 219, 219);
+  }
+  .movie-info p span {
+    text-decoration: underline;
+    color: #4796ff;
+  }
+  b{
+    font-size: 1.1em;
+    color: rgb(176, 179, 0)
+  }
