@@ -40,42 +40,44 @@ export default function Search() {
     setPage(p);
   };
   return (
-    <div className='search-container'>
+    <>
       <h1>Search</h1>
-      <div className='search'>
-        <input
-          type='text'
-          value={input}
-          className='searchTerm'
-          onChange={(e) => handleSubmit(e.target.value)}
-          placeholder='Search for your favorite movie...'
-        />
-      </div>
-      <div className='movies-list-container'>
-        {isLoading && <Spinner />}
-
-        {movies.map((movie) => (
-          <MoviesList
-            key={movie.id}
-            id={movie.id}
-            title={movie.title}
-            relDate={movie.release_date}
-            description={movie.overview}
-            image={'https://image.tmdb.org/t/p/w500/' + movie.poster_path}
-            vote={movie.vote_average}
-          />
-        ))}
-      </div>
-      {!movies.length == 0 && (
-        <div>
-          <Pagination
-            onChange={handlePageChange}
-            count={totalPages}
-            variant='outlined'
-            shape='rounded'
+      <div className='search-container'>
+        <div className='search'>
+          <input
+            type='text'
+            value={input}
+            className='searchTerm'
+            onChange={(e) => handleSubmit(e.target.value)}
+            placeholder='Search for your favorite movie...'
           />
         </div>
-      )}
-    </div>
+        <div className='movies-list-container'>
+          {isLoading && <Spinner />}
+
+          {movies.map((movie) => (
+            <MoviesList
+              key={movie.id}
+              id={movie.id}
+              title={movie.title}
+              relDate={movie.release_date}
+              description={movie.overview}
+              image={'https://image.tmdb.org/t/p/w500/' + movie.poster_path}
+              vote={movie.vote_average}
+            />
+          ))}
+        </div>
+        {!movies.length == 0 && (
+          <div>
+            <Pagination
+              onChange={handlePageChange}
+              count={totalPages}
+              variant='outlined'
+              shape='rounded'
+            />
+          </div>
+        )}
+      </div>
+    </>
   );
 }
