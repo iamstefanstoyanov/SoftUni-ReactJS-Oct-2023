@@ -5,11 +5,10 @@ import { getOneMovie } from '../services/moviesService';
 import Spinner from './Spinner';
 
 export default function MovieDetails() {
-
   const { id } = useParams();
   const [movieDetails, setMovieDetails] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
-  
+
   useEffect(() => {
     setIsLoading(true);
     getOneMovie(id)
@@ -73,12 +72,42 @@ export default function MovieDetails() {
               </svg>
             </div>
           </div>
-          {/* <div className='movie-comments'>
-            <h3>Comments</h3>
-            {movieComments?.map((e) => (
-              <p key={e._id}>{e}</p>
-            ))}
-          </div> */}
+          <div className='movie-comments-container'>
+            <h4>Comments</h4>
+            <ul className='comments'>
+              <li>
+                <p>Username....</p>
+                <hr />
+                <p>Comment....</p>
+              </li>
+              <li>
+                <p>Username....</p>
+                <hr />
+                <p>Comment....</p>
+              </li>
+              <li>
+                <p>Username....</p>
+                <hr />
+                <p>Comment....</p>
+              </li><li>
+                <p>Username....</p>
+                <hr />
+                <p>Comment....</p>
+              </li><li>
+                <p>Username....</p>
+                <hr />
+                <p>Comment....</p>
+              </li><li>
+                <p>Username....</p>
+                <hr />
+                <p>Comment....</p>
+              </li><li>
+                <p>Username....</p>
+                <hr />
+                <p>Comment....</p>
+              </li>
+            </ul>
+          </div>
         </>
       )}
     </>
