@@ -7,6 +7,7 @@ import Card from './Card';
 import Spinner from './Spinner';
 
 export default function Catalog() {
+
   const [movies, setMovies] = useState([]);
   const [page, setPage] = useState(1);
   const [isLoading, setIsLoading] = useState(false);
@@ -24,6 +25,7 @@ export default function Catalog() {
   const handleChange = (e, p) => {
     setPage(p);
   };
+  
   return (
     <>
       <h1>Catalog</h1>

@@ -1,31 +1,22 @@
-import Card from './Card';
 import { useEffect, useState } from 'react';
+
+import { getTopRatedAndNowPlaying } from '../services/moviesService';
+
+import Card from './Card';
 import Spinner from './Spinner';
 
 export default function HomePage() {
+
   const [movies, setMoives] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
-  const url = 'https://api.themoviedb.org/3/movie/top_rated';
-  const options = {
-    method: 'GET',
-    headers: {
-      accept: 'application/json',
-      Authorization:
-        'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI0NTIzYWEzYTRlOTRhYzhkYTQwMDk1Mzk2ZDQ3MDZkMiIsInN1YiI6IjY1MzhmYWQyZjQ5NWVlMDBmZjY2M2U4OCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.IzQpk27slS-MSxretzQENo36fQajZg1E14HSlXkTVOM',
-    },
-  };
   useEffect(() => {
     setIsLoading(true);
-
-    fetch(url, options)
-      .then((response) => response.json())
-      .then((data) => {
-        setMoives(Object.values(data.results.slice(0, 5)));
-      })
-      .catch((error) => console.log(error))
+    getTopRatedAndNowPlaying('top_rated')
+      .then(setMoives)
       .finally(() => setIsLoading(false));
   }, []);
+  
   return (
     <>
       <h1>Top Rated</h1>

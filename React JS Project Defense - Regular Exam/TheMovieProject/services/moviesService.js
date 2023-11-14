@@ -17,3 +17,8 @@ export const searchForMovies = async(input,page)=>{
     const data =await(await fetch(url, options)).json();
     return data ;
 }
+export const getTopRatedAndNowPlaying = async (request) =>{
+    const url = `https://api.themoviedb.org/3/movie/${request}`;
+    const data =await(await fetch(url, options)).json();
+    return Object.values(data.results.slice(0, 5)) ;
+}

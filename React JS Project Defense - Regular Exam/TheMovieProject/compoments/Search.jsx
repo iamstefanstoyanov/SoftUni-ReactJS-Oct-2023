@@ -23,12 +23,15 @@ export default function Search() {
       })
       .finally(() => setIsLoading(false));
   }, [input,page]);
+
   const handleSubmit = (value) => {
     setInput(value);
   };
+
   const handlePageChange = (e, p) => {
     setPage(p);
   };
+  
   return (
     <>
       <h1>Search</h1>
