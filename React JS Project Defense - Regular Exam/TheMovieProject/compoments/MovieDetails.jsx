@@ -87,11 +87,11 @@ export default function MovieDetails() {
               <ul className='comments'>
                 {movieComments.map((c) => (
                   <li key={c.id}>
-                    <p className='comment-username'>
+                    <p className='comment-p'>
                       <span>User:</span> {c.username}
                     </p>
                     <hr />
-                    <p className='comment-comment'>
+                    <p className='comment'>
                       <span>Comment:</span> {c.comment}
                     </p>
                   </li>
