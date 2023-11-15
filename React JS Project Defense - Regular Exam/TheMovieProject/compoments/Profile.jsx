@@ -25,9 +25,9 @@ export default function Profile() {
               <img src={user.imgUrl} alt='No Picture' />
             </div>
             <div className='profile-info'>
-              <p>Username: {user.username}</p>
-              <p>Movies in watchlist: {user.watchlist?.length}</p>
-              <p>Comments: {user.comments?.length}</p>
+              <p><span>Username:</span> {user.username}</p>
+              <p><span>Movies in watchlist:</span> {user.watchlist?.length}</p>
+              <p><span>Comments:</span> {user.comments?.length}</p>
             </div>
           </div>
           <div className='profile-watchlist'>

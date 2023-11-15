@@ -8,6 +8,7 @@
 }
 
 .main-profile-info {
+    color: rgb(255, 255, 255);
     display: flex;
     flex-direction: row;
     gap: 1em;
@@ -24,7 +25,10 @@
     flex-direction: column;
     justify-content: space-between;
 }
-
+.profile-info p span {
+    text-decoration: underline;
+    color: #4796ff;
+}
 .profile-watchlist,
 .profile-comments {
     width: 100%;
