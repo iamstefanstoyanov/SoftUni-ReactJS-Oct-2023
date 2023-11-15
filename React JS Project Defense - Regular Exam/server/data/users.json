@@ -1,0 +1,59 @@
+{
+  "fb352199-bcbc-4e1d-a1dc-ed346a6fb49a": {
+    "_id": "fb352199-bcbc-4e1d-a1dc-ed346a6fb49a",
+    "username": "John",
+    "email": "john@users.bg",
+    "age": 31,
+    "imgUrl": "https://avatars.githubusercontent.com/u/96234247?s=96&v=4",
+    "watchlist": [
+      {
+        "id": "800158",
+        "original_title": "The Killer",
+        "poster_path": "/e7Jvsry47JJQruuezjU2X1Z6J77.jpg",
+        "release_date": "2023-10-25",
+        "vote_average": 6.869
+      },
+      {
+        "id": "800159",
+        "original_title": "Avengers",
+        "poster_path": "/e7Jvsry47JJQruuezjU2X1Z6J77.jpg",
+        "release_date": "2023-10-25",
+        "vote_average": 6.869
+      },
+      {
+        "id": "800160",
+        "original_title": "The Godfather",
+        "poster_path": "/e7Jvsry47JJQruuezjU2X1Z6J77.jpg",
+        "release_date": "2023-10-25",
+        "vote_average": 6.869
+      }
+    ],
+    "comments": [
+      {
+        "id": "-MSgyg1jo4ZATbbeLtCF",
+        "movieTitle": "The Godfather",
+        "comment": "A nice overview of what 'Remote Databases' are."
+      },
+      {
+        "id": "-MSgyhugLG4gmph9qIGB",
+        "movieTitle": "Avengers",
+        "comment": "This is the best post I have ever read about 'Templating'!"
+      },
+      {
+        "id": "-MSgyl1Umh0tKd3ISkJt",
+        "movieTitle": "The OZ",
+        "comment": "Overall, the article is great."
+      },
+      {
+        "id": "-MSgymXYyAU71cDX6-eK",
+        "movieTitle": "Cars 2",
+        "comment": "This post helped me learn more about 'Routing'."
+      },
+      {
+        "id": "-MSgyo88wO16izQZCVjh",
+        "movieTitle": "Friends Tha Movie",
+        "comment": "I would like to read more articles about 'Routing' like this one."
+      }
+    ]
+  }
+}

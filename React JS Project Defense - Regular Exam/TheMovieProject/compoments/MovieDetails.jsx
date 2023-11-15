@@ -13,8 +13,7 @@ export default function MovieDetails() {
 
   useEffect(() => {
     setIsLoading(true);
-    getOneMovie(id)
-      .then(setMovieDetails);
+    getOneMovie(id).then(setMovieDetails);
     getCurrentMovieComments(id)
       .then(setMovieComments)
       .finally(() => setIsLoading(false));
@@ -29,7 +28,11 @@ export default function MovieDetails() {
           <div className='movie-details-container' id={movieDetails.id}>
             <img
               className='movie-details-img'
-              src={movieDetails.poster_path?`https://image.tmdb.org/t/p/w500${movieDetails.poster_path}`:null}
+              src={
+                movieDetails.poster_path
+                  ? `https://image.tmdb.org/t/p/w500${movieDetails.poster_path}`
+                  : null
+              }
               alt='Poster not avaible'
             />
             <div className='movie-details-info'>
@@ -51,7 +54,11 @@ export default function MovieDetails() {
                 {movieDetails.production_companies?.map((e) => (
                   <img
                     key={e.name}
-                    src={e.logo_path?`https://image.tmdb.org/t/p/w500${e.logo_path}`:null}
+                    src={
+                      e.logo_path
+                        ? `https://image.tmdb.org/t/p/w500${e.logo_path}`
+                        : null
+                    }
                     alt={e.name}
                   />
                 ))}
@@ -74,19 +81,28 @@ export default function MovieDetails() {
               </svg>
             </div>
           </div>
-          {!movieComments.length==0?<div className='movie-comments-container'>
-            <h4>Comments</h4>
-            <ul className='comments'>
-              {movieComments.map((c) => (
-                <li key={c.id}>
-                  <p className='comment-username'><span>User:</span> {c.username}</p>
-                  <hr />
-                  <p className='comment-comment'><span>Comment:</span> {c.comment}</p>
-                </li>
-              ))}
-            </ul>
-          </div> : <div className='no-comments'><h5>This movie has not been commented yet.</h5></div> }
-          
+          {!movieComments.length == 0 ? (
+            <div className='movie-comments-container'>
+              <h4>Comments</h4>
+              <ul className='comments'>
+                {movieComments.map((c) => (
+                  <li key={c.id}>
+                    <p className='comment-username'>
+                      <span>User:</span> {c.username}
+                    </p>
+                    <hr />
+                    <p className='comment-comment'>
+                      <span>Comment:</span> {c.comment}
+                    </p>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ) : (
+            <div className='no-comments'>
+              <p>This movie has not been commented yet.</p>
+            </div>
+          )}
         </>
       )}
     </>

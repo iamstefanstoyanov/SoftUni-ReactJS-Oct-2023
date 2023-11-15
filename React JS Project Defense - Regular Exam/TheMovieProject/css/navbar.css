@@ -236,7 +236,9 @@
 .sign-up:hover,
 .profile:hover,
 .logout:hover,
-.card-btn:hover {
+.card-btn:hover,
+.edit-comment:hover,
+.delete-comment:hover {
   background: #a5810a;
   cursor:pointer;
 }
