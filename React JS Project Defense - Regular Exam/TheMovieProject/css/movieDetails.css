@@ -106,3 +106,7 @@ hr {
     background-color: rgb(104, 104, 104);
     border: none;
 }
+
+.no-comments {
+    margin-top: 2em;
+}

@@ -29,9 +29,7 @@ export default function MovieDetails() {
           <div className='movie-details-container' id={movieDetails.id}>
             <img
               className='movie-details-img'
-              src={
-                'https://image.tmdb.org/t/p/w500/' + movieDetails.poster_path
-              }
+              src={movieDetails.poster_path?`https://image.tmdb.org/t/p/w500${movieDetails.poster_path}`:null}
               alt='Poster not avaible'
             />
             <div className='movie-details-info'>
@@ -53,7 +51,7 @@ export default function MovieDetails() {
                 {movieDetails.production_companies?.map((e) => (
                   <img
                     key={e.name}
-                    src={`https://image.tmdb.org/t/p/w500${e.logo_path}`}
+                    src={e.logo_path?`https://image.tmdb.org/t/p/w500${e.logo_path}`:null}
                     alt={e.name}
                   />
                 ))}
@@ -87,7 +85,7 @@ export default function MovieDetails() {
                 </li>
               ))}
             </ul>
-          </div> :null }
+          </div> : <div className='no-comments'><h5>This movie has not been commented yet.</h5></div> }
           
         </>
       )}
