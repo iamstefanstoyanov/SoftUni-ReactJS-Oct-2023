@@ -15,14 +15,17 @@ export default function Profile() {
       .catch((error) => console.log(error))
       .finally(() => setIsLoading(false));
   }, []);
-  const deleteCommentHandler = async (id) => {
-    await deleteComment(id, 'fb352199-bcbc-4e1d-a1dc-ed346a6fb49a');
+  const deleteCommentHandler = (id) => {
+    deleteComment(id, 'fb352199-bcbc-4e1d-a1dc-ed346a6fb49a');
+    setUser((state) => {
+      state.comments = Object.values(user.comments).filter((c) => c.id !== id);
+    });
   };
 
   return (
     <>
       {isLoading && <Spinner />}
-      {user && (
+      {!isLoading && (
         <div className='profile-container'>
           <div className='main-profile-info'>
             <div className='profile-picture'>

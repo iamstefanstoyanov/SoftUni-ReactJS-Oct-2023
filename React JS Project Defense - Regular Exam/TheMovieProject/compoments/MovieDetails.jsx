@@ -13,9 +13,11 @@ export default function MovieDetails() {
 
   useEffect(() => {
     setIsLoading(true);
-    getOneMovie(id).then(setMovieDetails);
+    getOneMovie(id)
+    .then(setMovieDetails);
     getCurrentMovieComments(id)
       .then(setMovieComments)
+      .catch((error) => console.log(error))
       .finally(() => setIsLoading(false));
   }, [id]);
 
