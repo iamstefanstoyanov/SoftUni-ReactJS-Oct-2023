@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { getUser } from '../services/userService';
-import { deleteComment } from '../services/commentsService';
+
 import Card from './Card';
 import Spinner from './Spinner';
 
@@ -15,12 +15,7 @@ export default function Profile() {
       .catch((error) => console.log(error))
       .finally(() => setIsLoading(false));
   }, []);
-  const deleteCommentHandler = (id) => {
-    deleteComment(id, 'fb352199-bcbc-4e1d-a1dc-ed346a6fb49a');
-    setUser((state) => {
-      state.comments = Object.values(user.comments).filter((c) => c.id !== id);
-    });
-  };
+ 
 
   return (
     <>
@@ -76,7 +71,7 @@ export default function Profile() {
                       <button
                         className='delete-comment'
                         id={c.id}
-                        onClick={(e) => deleteCommentHandler(e.target.id)}
+                      
                       >
                         Delete
                       </button>
