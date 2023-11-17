@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import { useRef } from 'react';
 import { getCurrentUserComments } from '../services/userService';
 import { deleteComment } from '../services/commentsService';
 import Spinner from './Spinner';
@@ -7,20 +6,16 @@ import Spinner from './Spinner';
 export default function ProfileComments() {
   const [userComments, setUserComments] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
-  let userCommentsObject = useRef(userComments);
   useEffect(() => {
     setIsLoading(true);
     getCurrentUserComments('fb352199-bcbc-4e1d-a1dc-ed346a6fb49a')
-      .then((data) => {
-        setUserComments(data);
-      })
+      .then(setUserComments)
       .catch((error) => console.log(error))
       .finally(() => setIsLoading(false));
-  }, [userCommentsObject]);
-  userCommentsObject.current=userComments;
+  }, []);
   const deleteHandler = (id) => {
     deleteComment(id, 'fb352199-bcbc-4e1d-a1dc-ed346a6fb49a');
-    setUserComments(userCommentsObject.current.filter((c) => c.id !== id));
+    setUserComments(userComments.filter((c) => c.id !== id));
   };
   return (
     <>
