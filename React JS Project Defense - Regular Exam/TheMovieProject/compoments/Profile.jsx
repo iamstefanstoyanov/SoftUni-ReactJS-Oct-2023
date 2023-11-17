@@ -8,14 +8,20 @@ import Spinner from './Spinner';
 export default function Profile() {
   const [user, setUser] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
-
+  const [commentsCount, setCommentsCount] = useState(0);
+  const [watchlistCount, setwatchlistCount] = useState(0);
   useEffect(() => {
     setIsLoading(true);
     getUser('fb352199-bcbc-4e1d-a1dc-ed346a6fb49a')
-      .then(setUser)
+      .then((data)=>{
+        setUser(data);
+        setCommentsCount(Object.values(data.comments).length)
+        setwatchlistCount(Object.values(data.watchlist).length)
+      })
       .catch((error) => console.log(error))
       .finally(() => setIsLoading(false));
-  }, []);
+  }, [commentsCount,watchlistCount]);
+
   return (
     <>
       {isLoading && <Spinner />}
@@ -30,10 +36,10 @@ export default function Profile() {
                 <span>Username:</span> {user.username}
               </p>
               <p>
-                <span>Movies in watchlist:</span> {user.watchlist?.length}
+                <span>Movies in watchlist:</span> {watchlistCount}
               </p>
               <p>
-                <span>Comments:</span> {user.comments?.length}
+                <span>Comments:</span> {commentsCount}
               </p>
             </div>
           </div>
