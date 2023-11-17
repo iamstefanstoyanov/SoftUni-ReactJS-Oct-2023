@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react';
 import { getUser } from '../services/userService';
+import ProfileComments from './ProfileComments';
+import ProfileWatchlist from './ProfileWatchlist';
 
-import Card from './Card';
 import Spinner from './Spinner';
 
 export default function Profile() {
@@ -15,7 +16,6 @@ export default function Profile() {
       .catch((error) => console.log(error))
       .finally(() => setIsLoading(false));
   }, []);
- 
 
   return (
     <>
@@ -41,43 +41,13 @@ export default function Profile() {
           <div className='profile-watchlist'>
             <h4>My watchlist</h4>
             <div className='profile-watchlist-cards'>
-              {user.watchlist?.map((m) => (
-                <Card
-                  key={m.id}
-                  id={m.id}
-                  title={m.original_title}
-                  relDate={m.release_date}
-                  image={'https://image.tmdb.org/t/p/w500/' + m.poster_path}
-                  vote={m.vote_average}
-                />
-              ))}
+              <ProfileWatchlist />
             </div>
           </div>
           <div className='movie-comments-container'>
             <h4>My comments</h4>
             <ul className='comments'>
-              {user.comments &&
-                Object.values(user.comments).map((c) => (
-                  <li key={c.id}>
-                    <p className='comment-p'>
-                      <span>Movie title:</span> {c.movieTitle}
-                    </p>
-                    <hr />
-                    <p className='comment'>
-                      <span>Comment:</span> {c.comment}
-                    </p>
-                    <div className='edit-delete-comments-btns'>
-                      <button className='edit-comment'>Edit</button>
-                      <button
-                        className='delete-comment'
-                        id={c.id}
-                      
-                      >
-                        Delete
-                      </button>
-                    </div>
-                  </li>
-                ))}
+              <ProfileComments />
             </ul>
           </div>
         </div>
