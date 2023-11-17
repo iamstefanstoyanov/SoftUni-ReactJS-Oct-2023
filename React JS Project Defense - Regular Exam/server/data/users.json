@@ -28,32 +28,32 @@
         "vote_average": 6.869
       }
     ],
-    "comments": [
-      {
+    "comments": {
+      "MSgyg1jo4ZATbbeLtCF": {
         "id": "MSgyg1jo4ZATbbeLtCF",
         "movieTitle": "The Godfather",
         "comment": "A nice overview of what 'Remote Databases' are."
       },
-     {
+      "MSgyhugLG4gmph9qIGB": {
         "id": "MSgyhugLG4gmph9qIGB",
         "movieTitle": "Avengers",
         "comment": "This is the best post I have ever read about 'Templating'!"
       },
-      {
+      "MSgyl1Umh0tKd3ISkJt": {
         "id": "MSgyl1Umh0tKd3ISkJt",
         "movieTitle": "The OZ",
         "comment": "Overall, the article is great."
       },
-      {
+      "MSgymXYyAU71cDX6-eK": {
         "id": "MSgymXYyAU71cDX6-eK",
         "movieTitle": "Cars 2",
         "comment": "This post helped me learn more about 'Routing'."
       },
-      {
+      "MSgyo88wO16izQZCVjh": {
         "id": "MSgyo88wO16izQZCVjh",
         "movieTitle": "Friends Tha Movie",
         "comment": "I would like to read more articles about 'Routing' like this one."
       }
-    ]
+    }
   }
 }
