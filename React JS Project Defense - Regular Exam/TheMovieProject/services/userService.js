@@ -17,5 +17,5 @@ const options = {
     const url = `http://localhost:3030/jsonstore/users/${id}/comments/`;
   
     const data = await (await fetch(url, options)).json();
-    return Object.values(data);
+    return data;
   };

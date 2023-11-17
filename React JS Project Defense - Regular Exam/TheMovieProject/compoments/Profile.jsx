@@ -16,7 +16,6 @@ export default function Profile() {
       .catch((error) => console.log(error))
       .finally(() => setIsLoading(false));
   }, []);
-
   return (
     <>
       {isLoading && <Spinner />}
