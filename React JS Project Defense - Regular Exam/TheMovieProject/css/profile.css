@@ -25,10 +25,12 @@
     flex-direction: column;
     justify-content: space-between;
 }
+
 .profile-info p span {
     text-decoration: underline;
     color: #4796ff;
 }
+
 .profile-watchlist,
 .profile-comments {
     width: 100%;
@@ -55,6 +57,7 @@
     flex-wrap: wrap;
     gap: 2em;
 }
+
 .profile-watchlist-cards .card {
     display: flex;
     flex-direction: column;
@@ -67,13 +70,20 @@
 .profile-watchlist-cards .card:hover {
     width: 180px;
 }
-.profile-watchlist-cards .card a{
-    width: 100%;
-}
-.profile-watchlist-cards .card h5{
-    text-align: left;
+
+.profile-watchlist-cards .card .card-btn {
+    font-size: 0.6em;
+    width: initial;
+    display: inline-block;
+    width: 50%;
 }
 
+.profile-watchlist-cards .card h5 {
+    text-align: left;
+}
+.profile-watchlist-cards .card .card-btns{
+    width: 100%;
+}
 .edit-comment,
 .delete-comment {
     font-size: 0.8em;
@@ -97,6 +107,7 @@
     width: 45%;
     padding: 0.5em;
 }
-.edit-delete-comments-btns{
+
+.edit-delete-comments-btns {
     float: right;
 }

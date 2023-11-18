@@ -20,14 +20,18 @@ export default function ProfileWatchlist() {
     <>
       {isLoading && <Spinner />}
       {userWatchlist?.map((m) => (
-        <Card
-          key={m.id}
-          id={m.id}
-          title={m.original_title}
-          relDate={m.release_date}
-          image={'https://image.tmdb.org/t/p/w500/' + m.poster_path}
-          vote={m.vote_average}
-        />
+        <>
+          <div className='user-profile-btns'>
+            <Card
+              key={m.id}
+              id={m.id}
+              title={m.original_title}
+              relDate={m.release_date}
+              image={'https://image.tmdb.org/t/p/w500/' + m.poster_path}
+              vote={m.vote_average}
+            />  
+          </div>
+        </>
       ))}
     </>
   );
