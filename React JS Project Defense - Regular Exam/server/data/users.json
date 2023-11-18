@@ -7,26 +7,89 @@
     "imgUrl": "https://avatars.githubusercontent.com/u/96234247?s=96&v=4",
     "watchlist": [
       {
-        "id": "800158",
-        "original_title": "The Killer",
-        "poster_path": "/e7Jvsry47JJQruuezjU2X1Z6J77.jpg",
-        "release_date": "2023-10-25",
-        "vote_average": 6.869
+          "id": 872585,
+          "original_title": "Oppenheimer",
+          "poster_path": "/8Gxv8gSFCU0XGDykEGv7zR1n2ua.jpg",
+          "release_date": "2023-07-19",
+          "vote_average": 8.2
       },
       {
-        "id": "800159",
-        "original_title": "Avengers",
-        "poster_path": "/e7Jvsry47JJQruuezjU2X1Z6J77.jpg",
-        "release_date": "2023-10-25",
-        "vote_average": 6.869
+          "id": 507089,
+          "original_title": "Five Nights at Freddy's",
+          "poster_path": "/A4j8S6moJS2zNtRR8oWF08gRnL5.jpg",
+          "release_date": "2023-10-25",
+          "vote_average": 8
       },
       {
-        "id": "800160",
-        "original_title": "The Godfather",
-        "poster_path": "/e7Jvsry47JJQruuezjU2X1Z6J77.jpg",
+          "id": 670292,
+          "original_title": "The Creator",
+          "poster_path": "/vBZ0qvaRxqEhZwl6LWmruJqWE8Z.jpg",
+          "release_date": "2023-09-27",
+          "vote_average": 7.1
+      },
+      {
+          "id": 575264,
+          "original_title": "Mission: Impossible - Dead Reckoning Part One",
+          "poster_path": "/NNxYkU70HPurnNCSiCjYAmacwm.jpg",
+          "release_date": "2023-07-08",
+          "vote_average": 7.6
+      },
+      {
+          "id": 299054,
+          "original_title": "Expend4bles",
+          "poster_path": "/iwsMu0ehRPbtaSxqiaUDQB9qMWT.jpg",
+          "release_date": "2023-09-15",
+          "vote_average": 6.5
+      },
+      {
+          "id": 385687,
+          "original_title": "Fast X",
+          "poster_path": "/fiVW06jE7z9YnO4trhaMEdclSiC.jpg",
+          "release_date": "2023-05-17",
+          "vote_average": 7.2
+      },
+      {
+        "id": 872585,
+        "original_title": "Oppenheimer",
+        "poster_path": "/8Gxv8gSFCU0XGDykEGv7zR1n2ua.jpg",
+        "release_date": "2023-07-19",
+        "vote_average": 8.2
+    },
+    {
+        "id": 507089,
+        "original_title": "Five Nights at Freddy's",
+        "poster_path": "/A4j8S6moJS2zNtRR8oWF08gRnL5.jpg",
         "release_date": "2023-10-25",
-        "vote_average": 6.869
-      }
+        "vote_average": 8
+    },
+    {
+        "id": 670292,
+        "original_title": "The Creator",
+        "poster_path": "/vBZ0qvaRxqEhZwl6LWmruJqWE8Z.jpg",
+        "release_date": "2023-09-27",
+        "vote_average": 7.1
+    },
+    {
+        "id": 575264,
+        "original_title": "Mission: Impossible - Dead Reckoning Part One",
+        "poster_path": "/NNxYkU70HPurnNCSiCjYAmacwm.jpg",
+        "release_date": "2023-07-08",
+        "vote_average": 7.6
+    },
+    {
+        "id": 299054,
+        "original_title": "Expend4bles",
+        "poster_path": "/iwsMu0ehRPbtaSxqiaUDQB9qMWT.jpg",
+        "release_date": "2023-09-15",
+        "vote_average": 6.5
+    },
+    {
+        "id": 385687,
+        "original_title": "Fast X",
+        "poster_path": "/fiVW06jE7z9YnO4trhaMEdclSiC.jpg",
+        "release_date": "2023-05-17",
+        "vote_average": 7.2
+    }
     ],
     "comments": {
       "MSgyg1jo4ZATbbeLtCF": {

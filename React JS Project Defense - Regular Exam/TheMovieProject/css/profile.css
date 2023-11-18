@@ -48,14 +48,6 @@
     margin-bottom: 2em;
 }
 
-.profile-watchlist .card {
-    width: 180px;
-    transition: none;
-}
-
-.profile-watchlist .card:hover {
-    width: 180px;
-}
 
 .profile-watchlist-cards {
     display: flex;
@@ -63,8 +55,24 @@
     flex-wrap: wrap;
     gap: 2em;
 }
+.profile-watchlist-cards .card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 180px;
+    transition: none;
+}
 
-
+.profile-watchlist-cards .card:hover {
+    width: 180px;
+}
+.profile-watchlist-cards .card a{
+    width: 100%;
+}
+.profile-watchlist-cards .card h5{
+    text-align: left;
+}
 
 .edit-comment,
 .delete-comment {
