@@ -1,3 +1,4 @@
+
 const options = {
   method: 'GET',
 };
@@ -13,4 +14,5 @@ export const deleteComment = async (postId,userId) => {
 
   const data =await (await fetch(url, {method: 'DELETE'})).json();
   return data;
+  
 };
