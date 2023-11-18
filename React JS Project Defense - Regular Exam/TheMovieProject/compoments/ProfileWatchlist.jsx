@@ -27,6 +27,7 @@ export default function ProfileWatchlist() {
           relDate={m.release_date}
           image={'https://image.tmdb.org/t/p/w500/' + m.poster_path}
           vote={m.vote_average}
+          user={'fb352199-bcbc-4e1d-a1dc-ed346a6fb49a'}
         />
       ))}
     </>

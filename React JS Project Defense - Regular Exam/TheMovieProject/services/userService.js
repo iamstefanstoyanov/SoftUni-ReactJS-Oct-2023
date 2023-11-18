@@ -11,7 +11,7 @@ const options = {
     const url = `http://localhost:3030/jsonstore/users/${id}/watchlist/`;
   
     const data = await (await fetch(url, options)).json();
-    return data;
+    return  Object.values(data);
   };
   export const getCurrentUserComments = async (id) => {
     const url = `http://localhost:3030/jsonstore/users/${id}/comments/`;
