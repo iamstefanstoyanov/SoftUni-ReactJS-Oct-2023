@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import { deleteFromWatchlist } from '../services/watchlistService';
 
 export default function Card({ id, title, relDate, description, image, vote,user }) {
-  const isUser = true;
+  const isUser = false;
   return (
     <div className='card' key={id}>
       <img src={image} alt='Not Poster Available' />
