@@ -1,8 +1,7 @@
 import { Link } from 'react-router-dom';
-import { deleteFromWatchlist } from '../services/watchlistService';
 
-export default function Card({ id, title, relDate, description, image, vote,user }) {
-  const isUser = false;
+export default function Card({ id, title, relDate, description, image, vote,user,remove }) {
+  const isUser = true;
   return (
     <div className='card' key={id}>
       <img src={image} alt='Not Poster Available' />
@@ -25,7 +24,7 @@ export default function Card({ id, title, relDate, description, image, vote,user
           </button>
         </Link>
         {isUser ? (
-          <button className='card-btn' type='button' onClick={(e)=>deleteFromWatchlist(id,user)}>
+          <button className='card-btn' type='button' onClick={remove}>
             <span>Remove</span>
           </button>
         ) : null}

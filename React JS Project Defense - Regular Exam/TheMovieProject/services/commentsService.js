@@ -1,4 +1,3 @@
-
 const options = {
   method: 'GET',
 };
