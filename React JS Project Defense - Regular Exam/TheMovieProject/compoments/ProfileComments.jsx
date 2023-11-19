@@ -5,26 +5,19 @@ import Spinner from './Spinner';
 
 export default function ProfileComments() {
   const [userComments, setUserComments] = useState([]);
-  const [commentsCount, setCommentsCount] = useState(0);
-  
+
   const [isLoading, setIsLoading] = useState(false);
   useEffect(() => {
     setIsLoading(true);
     getCurrentUserComments('fb352199-bcbc-4e1d-a1dc-ed346a6fb49a')
-      .then((data)=>{
-        setUserComments(data)
-        setCommentsCount(data.length)
-      })
+      .then(setUserComments)
       .catch((error) => console.log(error))
       .finally(() => setIsLoading(false));
-    }, []);
-    const deleteHandler = (id) => {
+  }, []);
+  const deleteHandler = (id) => {
     deleteComment(id, 'fb352199-bcbc-4e1d-a1dc-ed346a6fb49a');
-    setCommentsCount(c => c - 1)
     setUserComments(userComments.filter((c) => c.id !== id));
   };
-  console.log(`commentsCount = ${commentsCount}`)
-
   return (
     <>
       {isLoading && <Spinner />}

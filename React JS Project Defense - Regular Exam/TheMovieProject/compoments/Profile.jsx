@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { getUser } from '../services/userService';
+import { Link } from 'react-router-dom'
 import ProfileComments from './ProfileComments';
 import ProfileWatchlist from './ProfileWatchlist';
 
@@ -31,10 +32,10 @@ export default function Profile() {
                 <span>Username:</span> {user.username}
               </p>
               <p>
-                <span>Movies in watchlist:</span>
+                <span>Email:</span> {user.email}
               </p>
               <p>
-                <span>Comments:</span>
+                <span>Age:</span> {user.age}
               </p>
             </div>
           </div>

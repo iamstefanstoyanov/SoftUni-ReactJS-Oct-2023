@@ -7,15 +7,11 @@ import Spinner from './Spinner';
 export default function ProfileWatchlist() {
   const [userWatchlist, setUserWatchlist] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
-  const [watchlistCount, setwatchlistCount] = useState(0);
 
   useEffect(() => {
     setIsLoading(true);
     getCurrentUserWatchlist('fb352199-bcbc-4e1d-a1dc-ed346a6fb49a')
-      .then((data) => {
-        setUserWatchlist(data);
-        setwatchlistCount(data.length);
-      })
+      .then(setUserWatchlist)
       .catch((error) => console.log(error))
       .finally(() => setIsLoading(false));
   }, []);
@@ -23,7 +19,6 @@ export default function ProfileWatchlist() {
     e.preventDefault();
     deleteFromWatchlist(id, 'fb352199-bcbc-4e1d-a1dc-ed346a6fb49a');
     setUserWatchlist(userWatchlist.filter((m) => m.id !== id));
-    setwatchlistCount((c) => c - 1);
   };
   return (
     <>
