@@ -21,27 +21,35 @@ export default function ProfileComments() {
   return (
     <>
       {isLoading && <Spinner />}
-      {userComments?.map((c) => (
-        <li key={c.id}>
-          <p className='comment-p'>
-            <span>Movie title:</span> {c.movieTitle}
-          </p>
-          <hr />
-          <p className='comment'>
-            <span>Comment:</span> {c.comment}
-          </p>
-          <div className='edit-delete-comments-btns'>
-            <button className='edit-comment'>Edit</button>
-            <button
-              className='delete-comment'
-              id={c.id}
-              onClick={(e) => deleteHandler(e.target.id)}
-            >
-              Delete
-            </button>
-          </div>
-        </li>
-      ))}
+      {!userComments.length == 0 ? (
+        <>
+          {userComments?.map((c) => (
+            <li key={c.id}>
+              <p className='comment-p'>
+                <span>Movie title:</span> {c.movieTitle}
+              </p>
+              <hr />
+              <p className='comment'>
+                <span>Comment:</span> {c.comment}
+              </p>
+              <div className='edit-delete-comments-btns'>
+                <button className='edit-comment'>Edit</button>
+                <button
+                  className='delete-comment'
+                  id={c.id}
+                  onClick={(e) => deleteHandler(e.target.id)}
+                >
+                  Delete
+                </button>
+              </div>
+            </li>
+          ))}
+        </>
+      ) : (
+        <div className='no-comments'>
+          <p>You do not have any comments yet.</p>
+        </div>
+      )}
     </>
   );
 }
