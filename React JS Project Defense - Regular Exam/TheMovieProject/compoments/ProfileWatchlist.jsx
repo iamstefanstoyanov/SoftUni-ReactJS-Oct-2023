@@ -11,7 +11,9 @@ export default function ProfileWatchlist() {
   useEffect(() => {
     setIsLoading(true);
     getCurrentUserWatchlist('fb352199-bcbc-4e1d-a1dc-ed346a6fb49a')
-      .then(setUserWatchlist)
+      .then((data) => {
+        setUserWatchlist(data);
+      })
       .catch((error) => console.log(error))
       .finally(() => setIsLoading(false));
   }, []);

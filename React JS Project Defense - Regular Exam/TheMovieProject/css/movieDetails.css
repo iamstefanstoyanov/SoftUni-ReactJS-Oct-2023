@@ -31,9 +31,12 @@
 
 .movie-details-container .movie-details-btns {
     margin-left: auto;
-
+    height: fit-content;
 }
-
+.add-to-watchlist-btn{
+    background-color: transparent;
+    border: none;
+}
 .movie-details-container .icon-add-to-watchlist {
     fill: rgb(160, 160, 160);
     width: 5em;

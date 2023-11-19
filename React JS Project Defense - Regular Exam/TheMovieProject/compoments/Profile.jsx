@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
 import { getUser } from '../services/userService';
-import { Link } from 'react-router-dom'
 import ProfileComments from './ProfileComments';
 import ProfileWatchlist from './ProfileWatchlist';
 
