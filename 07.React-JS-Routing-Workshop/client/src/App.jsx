@@ -16,16 +16,23 @@ import GameDetails from './components/game-details/GameDetails';
 function App() {
   const navigate = useNavigate();
   const [auth, setAuth] = useState({});
+  const registerSubmitHandler = async (values) => {
+    const result = await authService.register(values.email, values.password);
+    setAuth(result);
+    navigate(Path.Home);
+  };
+
   const loginSubmitHandler = async (values) => {
     const result = await authService.login(values.email, values.password);
     setAuth(result);
     navigate(Path.Home);
   };
   const values = {
+    registerSubmitHandler,
     loginSubmitHandler,
-    username: auth.username,
+    username: auth.username || auth.email,
     email: auth.email,
-    isAuthenticated: !!auth.username,
+    isAuthenticated: !!auth.email,
   };
 
   return (

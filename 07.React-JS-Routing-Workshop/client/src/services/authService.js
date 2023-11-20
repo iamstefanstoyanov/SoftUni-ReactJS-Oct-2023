@@ -5,5 +5,10 @@ export const login = async (email, password) => {
     email,
     password,
   });
-  return result
+  return result;
 };
+export const register =  (email, password) =>
+  request.post(`${url}/register`, {
+    email,
+    password,
+  });
