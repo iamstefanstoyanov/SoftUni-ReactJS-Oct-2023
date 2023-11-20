@@ -31,7 +31,7 @@ export default function Login() {
                         value={values[LoginFormKyes.Email]}
                     />
 
-                    <label htmlFor="login-pass">Password:</label>
+                    <label htmlFor="login-password">Password:</label>
                     <input
                         type="password"
                         id="login-password"
