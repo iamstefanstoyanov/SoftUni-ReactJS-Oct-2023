@@ -1,8 +1,8 @@
 import { useState } from 'react';
 export default function usePersistedState(key, defValue) {
   const [state, setState] = useState(() => {
-    const pesistedState = localStorage.getItem(key);
-    if (pesistedState) {
+    const persistedState = localStorage.getItem(key);
+    if (persistedState) {
       return JSON.parse(persistedState);
     }
     return defValue;
