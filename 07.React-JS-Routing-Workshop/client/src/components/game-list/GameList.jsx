@@ -8,7 +8,10 @@ export default function GameList() {
 
     useEffect(() => {
         gameService.getAll()
-            .then(result => setGames(result));
+            .then(result => setGames(result))
+            .catch(error => {
+                console.log(error.code)
+            })
     }, []);
 
     return (

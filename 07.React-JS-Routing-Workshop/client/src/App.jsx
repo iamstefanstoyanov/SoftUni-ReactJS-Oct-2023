@@ -1,6 +1,6 @@
 import { Routes, Route } from 'react-router-dom';
 
-import {AuthProvider} from '../context/authContext';
+import { AuthProvider } from '../context/authContext';
 import Path from './paths';
 
 import Header from './components/header/Header';
@@ -13,7 +13,6 @@ import GameDetails from './components/game-details/GameDetails';
 import Logout from './components/logout/Logout';
 
 function App() {
-  
   return (
     <AuthProvider>
       <div id='box'>
