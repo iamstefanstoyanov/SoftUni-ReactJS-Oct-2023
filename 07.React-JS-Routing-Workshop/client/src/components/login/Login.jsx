@@ -24,7 +24,6 @@ export default function Login() {
                     <label htmlFor="email">Email:</label>
                     <input
                         type="email"
-                        id="email"
                         name={LoginFormKyes.Email}
                         placeholder="Sokka@gmail.com"
                         onChange={onChange}
@@ -34,7 +33,6 @@ export default function Login() {
                     <label htmlFor="login-password">Password:</label>
                     <input
                         type="password"
-                        id="login-password"
                         name={LoginFormKyes.Password}
                         onChange={onChange}
                         value={values[LoginFormKyes.Password]}

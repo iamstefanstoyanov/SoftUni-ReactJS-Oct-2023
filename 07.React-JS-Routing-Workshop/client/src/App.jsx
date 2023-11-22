@@ -49,7 +49,6 @@ function App() {
     <AuthContext.Provider value={values}>
       <div id='box'>
         <Header />
-
         <Routes>
           <Route path={Path.Home} element={<Home />} />
           <Route path='/games' element={<GameList />} />

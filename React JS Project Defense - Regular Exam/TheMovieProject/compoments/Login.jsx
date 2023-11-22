@@ -1,42 +1,20 @@
-import { useState } from 'react';
+import { useContext } from 'react';
 import { Link } from 'react-router-dom';
 
-export default function Login() {
-  const [formData, setFormData] = useState({
-    email: '',
-    password: '',
-  });
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({
-      ...formData,
-      [name]: value,
-    });
-  };
-  const handleLogin = (e) => {
-    e.preventDefault();
-    fetch('http://localhost:3030/jsonstore/users', {
-      method: 'GET',
-      headers: { 'Content-Type': 'application/json' },
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        let users = Object.values(data);
-        let user = users.find((u) => u.email === formData.email);
-        let userPass = users.find((u) => u.password === formData.password);
+import AuthContext from '../context/authContext';
+import useForm from '../hooks/useForm';
 
-        if (user && userPass) {
-          console.log(`Logged in with ${user.email}`);
-          setFormData({
-            password: '',
-            email: '',
-          });
-        } else {
-          console.log(`Failed to login`);
-        }
-      })
-      .catch((error) => console.log(error));
-  };
+const formKeys = {
+  email: 'email',
+  password: 'password',
+};
+
+export default function Login() {
+  const { loginHandler } = useContext(AuthContext);
+  const { inputs, onChangeInput, submitForm } = useForm(loginHandler, {
+    [formKeys.email]: '',
+    [formKeys.password]: '',
+  });
 
   return (
     <div className='signup-container'>
@@ -48,25 +26,23 @@ export default function Login() {
           </span>
         </div>
         <div className='form'>
-          <form action='/login' method='post'>
+          <form id='login' onSubmit={submitForm}>
             <input
               type='email'
-              name='email'
-              value={formData.email}
-              onChange={handleChange}
-              placeholder='Email'
+              placeholder='Email@email.com'
+              name={formKeys.email}
+              onChange={onChangeInput}
+              value={inputs[formKeys.email]}
             />
 
             <input
               type='password'
-              name='password'
-              placeholder='Password'
-              value={formData.password}
-              onChange={handleChange}
+              placeholder='Password...'
+              name={formKeys.password}
+              onChange={onChangeInput}
+              value={inputs[formKeys.password]}
             />
-            <button type='button' onClick={handleLogin}>
-              Login
-            </button>
+            <input type='submit' className='btn-submit' value='Login' />
           </form>
         </div>
       </div>
