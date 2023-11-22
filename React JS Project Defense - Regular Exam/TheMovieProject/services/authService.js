@@ -17,10 +17,10 @@ export const login = async (email, password) => {
     const data = await response.json();
     return data;
   } catch (err) {
-    console.error('Login error:', err.message);
+    console.log('Login error:', err);
   }
 };
-export const register = async (username, password, email,imgUrl) => {
+export const register = async (username, password, email, imgUrl) => {
   try {
     const response = await fetch(`${url}/register`, {
       method: 'POST',
@@ -31,16 +31,23 @@ export const register = async (username, password, email,imgUrl) => {
         username,
         password,
         email,
-        imgUrl
+        imgUrl,
       }),
     });
     if (!response.ok) {
       throw new Error('Registration failed');
     }
     const data = await response.json();
-    console.log(data)
     return data;
   } catch (err) {
-    console.error('Registration error:', err.message);
+    console.log('Registration error:', err);
+  }
+};
+export const logout = async () => {
+  try {
+    const result = await fetch(`${url}/logout`);
+    return result;
+  } catch (err) {
+    console.log(err);
   }
 };

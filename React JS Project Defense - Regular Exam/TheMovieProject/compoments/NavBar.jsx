@@ -58,7 +58,7 @@ export default function Navbar() {
               <Link to='/profile' className='profile'>
                 Profile
               </Link>
-              <Link to='logout' className='logout'>
+              <Link to='/logout' className='logout'>
                 Logout
               </Link>
             </div>

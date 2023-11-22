@@ -14,6 +14,8 @@ import Search from '../compoments/Search';
 import Profile from '../compoments/Profile';
 import MovieDetails from '../compoments/MovieDetails';
 import NotFound from '../compoments/NotFound';
+import Logout from '../compoments/Logout';
+
 function App() {
   const [auth, setAuth] = useState({});
   const navigate = useNavigate();
@@ -36,9 +38,13 @@ function App() {
       navigate('/signup');
     }
   }
+  const logoutHandler = ()=>{
+    setAuth({});
+  }
   const data = {
     loginHandler,
     registerHandler,
+    logoutHandler,
     username: auth.username,
     email: auth.email,
     imgUrl: auth.imgUrl,
@@ -56,6 +62,7 @@ function App() {
             <Route path='/nowplaying' element={<NowPlaying />} />
             <Route path='/login' element={<Login />} />
             <Route path='/signup' element={<SignUp />} />
+            <Route path='/logout' element={<Logout />} />
             <Route path='/profile' element={<Profile />} />
             <Route path='/moviedetails/:id' element={<MovieDetails />} />
             <Route path='*' element={<NotFound />} />
