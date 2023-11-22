@@ -1,7 +1,10 @@
 import { Link } from 'react-router-dom';
+import { useContext } from 'react';
+import AuthContext from '../context/authContext';
 
-export default function Card({ id, title, relDate, description, image, vote,user,remove }) {
-  const isUser = true;
+export default function Card({ id, title, relDate, description, image, vote,remove }) {
+  const { isAuth } = useContext(AuthContext);
+
   return (
     <div className='card' key={id}>
       <img src={image} alt='Not Poster Available' />
@@ -23,7 +26,7 @@ export default function Card({ id, title, relDate, description, image, vote,user
             <span>More details</span>
           </button>
         </Link>
-        {isUser ? (
+        {isAuth ? (
           <button className='card-btn' type='button' onClick={remove}>
             <span>Remove</span>
           </button>

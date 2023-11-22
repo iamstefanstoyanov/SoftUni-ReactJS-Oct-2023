@@ -1,8 +1,11 @@
 import { Link } from 'react-router-dom';
 
 import Clock from './Clock';
+import { useContext } from 'react';
+import AuthContext from '../context/authContext';
 
 export default function Navbar() {
+  const { isAuth, username } = useContext(AuthContext);
   return (
     <div className='navbar'>
       <div className='background'>
@@ -47,23 +50,29 @@ export default function Navbar() {
             </Link>
           </li>
         </ul>
+
         <div className='user-btns'>
-          <div className='user'>
-            <Link to='/profile' className='profile'>
-              Profile
-            </Link>
-            <Link to='logout' className='logout'>
-              Logout
-            </Link>
-          </div>
-          <div className='guest'>
-            <Link to='login' className='login'>
-              Log in
-            </Link>
-            <Link to='signup' className='sign-up'>
-              Sign up
-            </Link>
-          </div>
+          {isAuth && (
+            <div className='user'>
+              <span className='welcome'>Welcome: {username} !</span>
+              <Link to='/profile' className='profile'>
+                Profile
+              </Link>
+              <Link to='logout' className='logout'>
+                Logout
+              </Link>
+            </div>
+          )}
+          {!isAuth && (
+            <div className='guest'>
+              <Link to='login' className='login'>
+                Log in
+              </Link>
+              <Link to='signup' className='sign-up'>
+                Sign up
+              </Link>
+            </div>
+          )}
           <Clock />
         </div>
       </div>

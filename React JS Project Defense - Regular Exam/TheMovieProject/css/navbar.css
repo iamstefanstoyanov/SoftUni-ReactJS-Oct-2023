@@ -63,11 +63,9 @@
 
 .user {
   display: flex;
-  flex-direction: row;
-  justify-content: space-around;
   align-items: center;
   align-content: center;
-  gap: 2em;
+  gap: 1em;
 }
 
 .guest {
@@ -115,13 +113,31 @@
   text-transform: uppercase;
   border: none;
   letter-spacing: 0.1rem;
-  font-size: 1rem;
-  padding: 0.7rem 1.5rem;
+  font-size: 1em;
+  padding: 0.7em 1.5em;
   transition: 0.2s;
   white-space: nowrap;
   overflow: hidden;
 }
+@media (max-width: 1300px) {
+  .nav-btn {
+    font-size: 0.8em;
+    padding: 0.7em 1em;
+  }
+  .nav-btn:hover {
+    padding: 0.8em 1.1em;
 
+  }
+  .nav-btn:hover i::before {
+    width: 8px;
+  }
+  .logo-text {
+    font-size: 2em;
+  }
+  .logo_png {
+  height: 3em;
+  }
+}
 .nav-btn:hover {
   letter-spacing: 0.1rem;
   padding: 0.8rem 1.8rem;
@@ -218,7 +234,8 @@
 .profile,
 .logout,
 .clock,
-.card-btn {
+.card-btn,
+.welcome {
   display: inline-block;
   background: #353535;
   color: rgb(255, 255, 255);
@@ -230,7 +247,10 @@
   white-space: nowrap;
 
 }
+.welcome{
+  padding: 5px 9px;
 
+}
 .login:hover,
 .sign-up:hover,
 .profile:hover,

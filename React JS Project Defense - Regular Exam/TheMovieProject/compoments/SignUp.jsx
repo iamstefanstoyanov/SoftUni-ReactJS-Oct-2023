@@ -1,62 +1,24 @@
-import { useState } from 'react';
+import { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import AuthContext from '../context/authContext';
+import useForm from '../hooks/useForm';
+const formKeys = {
+  username: 'username',
+  email: 'email',
+  password: 'password',
+  repass: 'repass',
+  url:'imgUrl'
+};
 export default function SignUp() {
-  const [formData, setFormData] = useState({
-    username: '',
-    password: '',
-    rePassword: '',
-    email: '',
-    url:''
-  });
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({
-      ...formData,
-      [name]: value,
-    });
-  };
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    const emailPattern = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i;
-    if (formData.password !== formData.rePassword) {
-      console.log('Passwords do not match!');
-      return;
-    }
-    if (formData.username.length <= 4) {
-      console.log('Username must be at least 5 characters!');
-      return;
-    }
-    if (!emailPattern.test(formData.email)) {
-      console.log('Invalid Email!');
-      return;
-    }
-    const requestOptions = {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(formData),
-    };
-
-    fetch('http://localhost:3030/jsonstore/users', requestOptions)
-      .then((response) => {
-        if (response.ok) {
-          setFormData({
-            username: '',
-            password: '',
-            rePassword: '',
-            email: '',
-            url:''
-
-          });
-          console.log('Registration successful');
-        } else {
-          console.error('Registration failed');
-        }
-      })
-      .catch((error) => {
-        console.error('An error occurred:', error);
-      });
-  };
-
+  const {registerHandler} =useContext(AuthContext);
+  const {inputs,onChangeInput,submitForm} = useForm(registerHandler,{
+    [formKeys.username]: '',
+    [formKeys.email]: '',
+    [formKeys.password]: '',
+    [formKeys.repass]: '',
+    [formKeys.url]: '',
+  })
+   
   return (
     <div className='signup-container'>
       <div className='signup'>
@@ -67,46 +29,44 @@ export default function SignUp() {
           </span>
         </div>
         <div className='form'>
-          <form onSubmit={handleSubmit}>
+          <form onSubmit={submitForm}>
             <input
               type='text'
-              name='username'
-              placeholder='UserName'
-              id='username'
-              value={formData.username}
-              onChange={handleChange}
+              placeholder='Username...'
+              name={formKeys.username}
+              onChange={onChangeInput}
+              value={inputs[formKeys.username]}
             />
 
             <input
               type='email'
-              name='email'
               placeholder='Email'
-              value={formData.email}
-              onChange={handleChange}
+              name={formKeys.email}
+              onChange={onChangeInput}
+              value={inputs[formKeys.email]}
             />
             <input
-              type='url'
-              name='url'
+              type='text'
               placeholder='Profile image URL'
-              value={formData.url}
-              onChange={handleChange}
+              name={formKeys.url}
+              onChange={onChangeInput}
+              value={inputs[formKeys.url]}
             />
             <input
               type='password'
-              name='password'
               placeholder='Password'
-              id='password'
-              value={formData.password}
-              onChange={handleChange}
+              name={formKeys.password}
+              onChange={onChangeInput}
+              value={inputs[formKeys.password]}
             />
             <input
               type='password'
-              name='rePassword'
               placeholder='Confirm password'
-              value={formData.rePassword}
-              onChange={handleChange}
+              name={formKeys.repass}
+              onChange={onChangeInput}
+              value={inputs[formKeys.repass]}
             />
-            <button type='submit'>Sign Up</button>
+            <input type='submit' className='btn-submit' value='SignUp' />
           </form>
         </div>
       </div>

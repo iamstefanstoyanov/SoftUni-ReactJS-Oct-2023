@@ -29,7 +29,7 @@ export default function Login() {
           <form id='login' onSubmit={submitForm}>
             <input
               type='email'
-              placeholder='Email@email.com'
+              placeholder='email@email.com'
               name={formKeys.email}
               onChange={onChangeInput}
               value={inputs[formKeys.email]}
@@ -37,7 +37,7 @@ export default function Login() {
 
             <input
               type='password'
-              placeholder='Password...'
+              placeholder='password...'
               name={formKeys.password}
               onChange={onChangeInput}
               value={inputs[formKeys.password]}
