@@ -17,7 +17,7 @@ export const login = async (email, password) => {
     const data = await response.json();
     return data;
   } catch (err) {
-    console.log('Login error:', err);
+    console.log(err);
   }
 };
 export const register = async (username, password, email, imgUrl) => {
@@ -32,6 +32,8 @@ export const register = async (username, password, email, imgUrl) => {
         password,
         email,
         imgUrl,
+        comments:{},
+        watchlist:{}
       }),
     });
     if (!response.ok) {
@@ -40,7 +42,7 @@ export const register = async (username, password, email, imgUrl) => {
     const data = await response.json();
     return data;
   } catch (err) {
-    console.log('Registration error:', err);
+    console.log(err)
   }
 };
 export const logout = async () => {

@@ -7,23 +7,39 @@ const optionsTMDB = {
   },
 };
 export const getAllMovies = async (page) => {
-  const url = `https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=${page}&sort_by=popularity.desc`;
-  const data = await (await fetch(url, optionsTMDB)).json();
-  return Object.values(data.results);
+  try {
+    const url = `https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=${page}&sort_by=popularity.desc`;
+    const data = await (await fetch(url, optionsTMDB)).json();
+    return Object.values(data.results);
+  } catch (error) {
+    console.log(error);
+  }
 };
 
 export const searchForMovies = async (input, page) => {
-  const url = `https://api.themoviedb.org/3/search/movie?query=${input}&include_adult=false&language=en-US&&page=${page}`;
-  const data = await (await fetch(url, optionsTMDB)).json();
-  return data;
+  try {
+    const url = `https://api.themoviedb.org/3/search/movie?query=${input}&include_adult=false&language=en-US&&page=${page}`;
+    const data = await (await fetch(url, optionsTMDB)).json();
+    return data;
+  } catch (error) {
+    console.log(error);
+  }
 };
 export const getTopRatedAndNowPlaying = async (request) => {
-  const url = `https://api.themoviedb.org/3/movie/${request}`;
-  const data = await (await fetch(url, optionsTMDB)).json();
-  return Object.values(data.results.slice(0, 5));
+  try {
+    const url = `https://api.themoviedb.org/3/movie/${request}`;
+    const data = await (await fetch(url, optionsTMDB)).json();
+    return Object.values(data.results.slice(0, 5));
+  } catch (error) {
+    console.log(error);
+  }
 };
 export const getOneMovie = async (id) => {
-  const url = `https://api.themoviedb.org/3/movie/${id}?language=en-US`;
-  const data = await (await fetch(url, optionsTMDB)).json();
-  return data;
+  try {
+    const url = `https://api.themoviedb.org/3/movie/${id}?language=en-US`;
+    const data = await (await fetch(url, optionsTMDB)).json();
+    return data;
+  } catch (error) {
+    console.log(error);
+  }
 };

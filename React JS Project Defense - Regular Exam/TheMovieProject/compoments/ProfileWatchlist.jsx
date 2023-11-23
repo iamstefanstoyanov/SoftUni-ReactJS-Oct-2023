@@ -7,7 +7,6 @@ import Spinner from './Spinner';
 export default function ProfileWatchlist() {
   const [userWatchlist, setUserWatchlist] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
-
   useEffect(() => {
     setIsLoading(true);
     getCurrentUserWatchlist('fb352199-bcbc-4e1d-a1dc-ed346a6fb49a')
@@ -37,6 +36,7 @@ export default function ProfileWatchlist() {
               vote={m.vote_average}
               user={'fb352199-bcbc-4e1d-a1dc-ed346a6fb49a'}
               remove={(e) => removeFromWatchlist(e, m._id)}
+              isProfile='true'
             />
           ))}
         </>

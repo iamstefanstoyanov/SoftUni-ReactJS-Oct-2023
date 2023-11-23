@@ -1,10 +1,19 @@
+/* eslint-disable react/prop-types */
 import { Link } from 'react-router-dom';
 import { useContext } from 'react';
 import AuthContext from '../context/authContext';
 
-export default function Card({ id, title, relDate, description, image, vote,remove }) {
+export default function Card({
+  id,
+  title,
+  relDate,
+  description,
+  image,
+  vote,
+  remove,
+  isProfile
+}) {
   const { isAuth } = useContext(AuthContext);
-
   return (
     <div className='card' key={id}>
       <img src={image} alt='Not Poster Available' />
@@ -26,7 +35,7 @@ export default function Card({ id, title, relDate, description, image, vote,remo
             <span>More details</span>
           </button>
         </Link>
-        {isAuth ? (
+        {isAuth && isProfile ? (
           <button className='card-btn' type='button' onClick={remove}>
             <span>Remove</span>
           </button>
