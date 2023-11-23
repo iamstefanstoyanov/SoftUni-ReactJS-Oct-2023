@@ -14,7 +14,7 @@ export default function Logout() {
         }
       })
       .catch((err) => {
-        console.log('Registration error:', err);
+        console.log('Logout failed:', err);
       });
   }, []);
   return null;
