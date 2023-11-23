@@ -44,10 +44,13 @@ export const register = async (username, password, email, imgUrl) => {
   }
 };
 export const logout = async () => {
-  try {
-    const result = await fetch(`${url}/logout`);
-    return result;
-  } catch (err) {
-    console.log(err);
-  }
+  const token = localStorage.getItem('accessToken');
+
+  const result = await fetch(`${url}/logout`, {
+    method: 'GET',
+    headers: {
+      'X-Authorization': token,
+    },
+  });
+  return result
 };
