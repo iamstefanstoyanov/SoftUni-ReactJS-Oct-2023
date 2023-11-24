@@ -1,22 +1,23 @@
-import { useEffect, useState } from 'react';
-import { getCurrentUserComments } from '../services/userService';
-import { deleteComment } from '../services/commentsService';
+import { useEffect, useState,useContext } from 'react';
+import { deleteComment, getCurrentUserComments } from '../services/commentsService';
 import Spinner from './Spinner';
+import AuthContext from '../context/authContext';
 
 export default function ProfileComments() {
-  const [userComments, setUserComments] = useState([]);
+  const [userComments, setUserComments] = useState({});
+  const { userId } = useContext(AuthContext);
 
   const [isLoading, setIsLoading] = useState(false);
   useEffect(() => {
     setIsLoading(true);
-    getCurrentUserComments('fb352199-bcbc-4e1d-a1dc-ed346a6fb49a')
+    getCurrentUserComments(userId)
       .then(setUserComments)
       .catch((error) => console.log(error))
       .finally(() => setIsLoading(false));
   }, []);
-  const deleteHandler = (id) => {
-    deleteComment(id, 'fb352199-bcbc-4e1d-a1dc-ed346a6fb49a');
-    setUserComments(userComments.filter((c) => c.id !== id));
+  const deleteHandler = (e,id) => {
+    deleteComment(id);
+    setUserComments(userComments.filter((c) => c._id !== id));
   };
   return (
     <>
@@ -24,9 +25,9 @@ export default function ProfileComments() {
       {!userComments.length == 0 ? (
         <>
           {userComments?.map((c) => (
-            <li key={c.id}>
+            <li key={c._id}>
               <p className='comment-p'>
-                <span>Movie title:</span> {c.movieTitle}
+                <span>Movie title:</span> {c.title}
               </p>
               <hr />
               <p className='comment'>
@@ -37,7 +38,7 @@ export default function ProfileComments() {
                 <button
                   className='delete-comment'
                   id={c.id}
-                  onClick={(e) => deleteHandler(e.target.id)}
+                  onClick={(e) => deleteHandler(e,c._id)}
                 >
                   Delete
                 </button>

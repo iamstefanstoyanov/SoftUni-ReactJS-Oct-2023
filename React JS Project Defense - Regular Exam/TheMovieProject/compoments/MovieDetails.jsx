@@ -1,21 +1,26 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { getOneMovie } from '../services/moviesService';
-import { getCurrentMovieComments } from '../services/commentsService';
+import {
+  addComment,
+  getCurrentMovieComments,
+} from '../services/commentsService';
 
 import Spinner from './Spinner';
 import { addToWatchlist } from '../services/watchlistService';
 import { useContext } from 'react';
 import AuthContext from '../context/authContext';
 import Login from './Login';
-
+import useForm from '../hooks/useForm';
+const formKeys = {
+  text: 'text',
+};
 export default function MovieDetails() {
   const { id } = useParams();
   const [movieDetails, setMovieDetails] = useState([]);
   const [movieComments, setMovieComments] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
-  const { isAuth, userId } = useContext(AuthContext);
-
+  const { isAuth, userId, username } = useContext(AuthContext);
   useEffect(() => {
     setIsLoading(true);
     getOneMovie(id).then(setMovieDetails);
@@ -24,13 +29,15 @@ export default function MovieDetails() {
       .catch((error) => console.log(error))
       .finally(() => setIsLoading(false));
   }, [id]);
-
   const addToWatchlistHandler = () => {
     addToWatchlist(movieDetails, userId);
   };
-  const addCommentHandler = () => {
-    console.log('Adding comment')
-  }
+  const addCommentHandler = (inputs) => {
+    addComment(username, inputs, movieDetails.title,id);
+  };
+  const { inputs, onChangeInput, submitForm } = useForm(addCommentHandler, {
+    [formKeys.text]: '',
+  });
   return (
     <>
       {isAuth && (
@@ -108,7 +115,7 @@ export default function MovieDetails() {
                   <h4>Comments</h4>
                   <ul className='comments'>
                     {movieComments.map((c) => (
-                      <li key={c.id}>
+                      <li key={c._id}>
                         <p className='comment-p'>
                           <span>User:</span> {c.username}
                         </p>
@@ -119,15 +126,6 @@ export default function MovieDetails() {
                       </li>
                     ))}
                   </ul>
-                  <div className='add-comment'>
-                    <button
-                      className='add-comment-btn'
-                      type='button'
-                      onClick={addCommentHandler}
-                    >
-                      Add Comment
-                    </button>
-                  </div>
                 </div>
               ) : (
                 <div className='movie-comments-container'>
@@ -137,6 +135,22 @@ export default function MovieDetails() {
                   </div>
                 </div>
               )}
+              <div className='add-comment'>
+                <form className='form' onSubmit={submitForm}>
+                  <textarea
+                    type='text'
+                    name={formKeys.text}
+                    value={inputs[formKeys.text]}
+                    onChange={onChangeInput}
+                    placeholder='Comment......'
+                  ></textarea>
+                  <input
+                    className='btn submit'
+                    type='submit'
+                    value='Add Comment'
+                  />
+                </form>
+              </div>
             </>
           )}
         </>
