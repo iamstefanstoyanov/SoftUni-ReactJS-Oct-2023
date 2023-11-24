@@ -14,7 +14,7 @@ export default function MovieDetails() {
   const [movieDetails, setMovieDetails] = useState([]);
   const [movieComments, setMovieComments] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
-  const { isAuth } = useContext(AuthContext);
+  const { isAuth, userId } = useContext(AuthContext);
 
   useEffect(() => {
     setIsLoading(true);
@@ -26,9 +26,11 @@ export default function MovieDetails() {
   }, [id]);
 
   const addToWatchlistHandler = () => {
-    addToWatchlist(movieDetails, 'fb352199-bcbc-4e1d-a1dc-ed346a6fb49a');
+    addToWatchlist(movieDetails, userId);
   };
-
+  const addCommentHandler = () => {
+    console.log('Adding comment')
+  }
   return (
     <>
       {isAuth && (
@@ -117,10 +119,22 @@ export default function MovieDetails() {
                       </li>
                     ))}
                   </ul>
+                  <div className='add-comment'>
+                    <button
+                      className='add-comment-btn'
+                      type='button'
+                      onClick={addCommentHandler}
+                    >
+                      Add Comment
+                    </button>
+                  </div>
                 </div>
               ) : (
-                <div className='no-comments'>
-                  <p>This movie has not been commented yet.</p>
+                <div className='movie-comments-container'>
+                  <h4>Comments</h4>
+                  <div className='no-comments'>
+                    <p>This movie has not been commented yet.</p>
+                  </div>
                 </div>
               )}
             </>

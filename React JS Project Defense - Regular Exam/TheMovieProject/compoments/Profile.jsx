@@ -2,7 +2,6 @@ import ProfileComments from './ProfileComments';
 import ProfileWatchlist from './ProfileWatchlist';
 import { useContext } from 'react';
 import AuthContext from '../context/authContext';
-
 export default function Profile() {
   const { username, email, imgUrl } = useContext(AuthContext);
   return (
@@ -17,9 +16,6 @@ export default function Profile() {
           </p>
           <p>
             <span>Email:</span> {email}
-          </p>
-          <p>
-            <span>Age:</span>??
           </p>
         </div>
       </div>

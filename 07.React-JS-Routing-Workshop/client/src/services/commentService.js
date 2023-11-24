@@ -7,6 +7,7 @@ export const getAll = async (gameId) => {
         where: `gameId="${gameId}"`,
         load: `owner=_ownerId:users`,
     });
+    console.log(query)
 
     const result = await request.get(`${baseUrl}?${query}`);
 

@@ -1,32 +1,27 @@
-import { getCurrentUserWatchlist } from '../services/userService';
-import { useEffect, useState } from 'react';
 import { deleteFromWatchlist } from '../services/watchlistService';
 import Card from './Card';
-import Spinner from './Spinner';
-
+import { useContext, useEffect, useState } from 'react';
+import AuthContext from '../context/authContext';
+import { getCurrentUserWatchlist } from '../services/watchlistService';
 export default function ProfileWatchlist() {
-  const [userWatchlist, setUserWatchlist] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
+  const { userId } = useContext(AuthContext);
+  const [currentUserWatchlist, setCurrentUserWatchlist] = useState({});
   useEffect(() => {
-    setIsLoading(true);
-    getCurrentUserWatchlist('fb352199-bcbc-4e1d-a1dc-ed346a6fb49a')
-      .then((data) => {
-        setUserWatchlist(data);
-      })
-      .catch((error) => console.log(error))
-      .finally(() => setIsLoading(false));
-  }, []);
+    getCurrentUserWatchlist(userId)
+    .then((data) => {
+      setCurrentUserWatchlist(data);
+    });
+  },[]);
   const removeFromWatchlist = (e, id) => {
     e.preventDefault();
-    deleteFromWatchlist(id, 'fb352199-bcbc-4e1d-a1dc-ed346a6fb49a');
-    setUserWatchlist(userWatchlist.filter((m) => m._id !== id));
+    deleteFromWatchlist(id);
+    setCurrentUserWatchlist(currentUserWatchlist.filter((m) => m._id !== id));
   };
   return (
     <>
-      {isLoading && <Spinner />}
-      {!userWatchlist.length == 0 ? (
+      {!currentUserWatchlist.length == 0 ? (
         <>
-          {userWatchlist?.map((m) => (
+          {currentUserWatchlist?.map((m) => (
             <Card
               key={m._id}
               id={m.id}

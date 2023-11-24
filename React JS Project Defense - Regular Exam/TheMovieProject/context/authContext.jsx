@@ -19,7 +19,6 @@ export const AuthProvider = ({ children }) => {
     }
   };
   const registerHandler = async (inputs) => {
-    console.log(inputs);
     const result = await register(
       inputs.username,
       inputs.password,
@@ -45,6 +44,9 @@ export const AuthProvider = ({ children }) => {
     username: auth.username,
     email: auth.email,
     imgUrl: auth.imgUrl,
+    comments: auth.comments,
+    watchlist: auth.watchlist,
+    userId:auth._id,
     isAuth: !!auth.username,
   };
   return <AuthContext.Provider value={data}>{children}</AuthContext.Provider>;
