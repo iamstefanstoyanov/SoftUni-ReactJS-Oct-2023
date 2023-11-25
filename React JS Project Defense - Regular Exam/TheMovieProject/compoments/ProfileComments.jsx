@@ -37,7 +37,7 @@ export default function ProfileComments() {
                 <button className='edit-comment'>Edit</button>
                 <button
                   className='delete-comment'
-                  id={c.id}
+                  id={c._id}
                   onClick={(e) => deleteHandler(e,c._id)}
                 >
                   Delete

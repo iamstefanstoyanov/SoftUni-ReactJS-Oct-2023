@@ -33,8 +33,14 @@ export default function MovieDetails() {
     addToWatchlist(movieDetails, userId);
   };
   const addCommentHandler = (inputs) => {
-    addComment(username, inputs, movieDetails.title,id);
+    addComment(username, inputs, movieDetails.title, id);
+    addToList(username, inputs.text, movieDetails.title, id);
+    inputs[formKeys.text]='';
   };
+  const addToList = (username,comment,title,id) => {
+    setMovieComments(list => [...list, { username,comment,title,id }]);
+  };
+
   const { inputs, onChangeInput, submitForm } = useForm(addCommentHandler, {
     [formKeys.text]: '',
   });
@@ -115,7 +121,7 @@ export default function MovieDetails() {
                   <h4>Comments</h4>
                   <ul className='comments'>
                     {movieComments.map((c) => (
-                      <li key={c._id}>
+                      <li key={c._id} id={c._id}>
                         <p className='comment-p'>
                           <span>User:</span> {c.username}
                         </p>
@@ -145,7 +151,7 @@ export default function MovieDetails() {
                     placeholder='Comment......'
                   ></textarea>
                   <input
-                    className='btn submit'
+                    className='btn-submit'
                     type='submit'
                     value='Add Comment'
                   />
