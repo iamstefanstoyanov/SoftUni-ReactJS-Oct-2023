@@ -1,20 +1,27 @@
-import { useState } from "react"
+import { useState } from 'react';
 
 export default function useForm(submitHandler, initialValues) {
-    const [inputs, setInputs] = useState(initialValues);
+  const [inputs, setInputs] = useState(initialValues);
+  const onChangeInput = (e) => {
+    setInputs((state) => ({
+      ...state,
+      [e.target.name]: e.target.value,
+    }));
+    
+  };
 
-    const onChangeInput = (e) => {
-        setInputs(state => ({
-            ...state,
-            [e.target.name]: e.target.value
-        }));
-    };
+  const submitForm = (e) => {
+    e.preventDefault();
+    submitHandler(inputs);
+  };
 
-    const submitForm = (e) => {
-        e.preventDefault();
-        submitHandler(inputs);
-    };
-    /* const handleSubmit = (e) => {
+  return {
+    inputs,
+    onChangeInput,
+    submitForm,
+  };
+}
+/* const handleSubmit = (e) => {
         const emailPattern = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i;
         if (formData.password !== formData.rePassword) {
           console.log('Passwords do not match!');
@@ -30,9 +37,3 @@ export default function useForm(submitHandler, initialValues) {
         }
         
       }; */
-    return {
-        inputs,
-        onChangeInput,
-        submitForm,
-    }
-}

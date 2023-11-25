@@ -32,8 +32,6 @@ export const register = async (username, password, email, imgUrl) => {
         password,
         email,
         imgUrl,
-        comments:{},
-        watchlist:{}
       }),
     });
     if (!response.ok) {

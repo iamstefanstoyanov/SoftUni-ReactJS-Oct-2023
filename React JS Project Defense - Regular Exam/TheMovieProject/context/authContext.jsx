@@ -44,8 +44,6 @@ export const AuthProvider = ({ children }) => {
     username: auth.username,
     email: auth.email,
     imgUrl: auth.imgUrl,
-    comments: auth.comments,
-    watchlist: auth.watchlist,
     userId:auth._id,
     isAuth: !!auth.username,
   };

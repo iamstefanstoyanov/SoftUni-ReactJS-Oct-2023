@@ -25,7 +25,7 @@ export default function ProfileWatchlist() {
             <Card
               key={m._id}
               id={m.id}
-              title={m.original_title}
+              title={m.title}
               relDate={m.release_date}
               image={'https://image.tmdb.org/t/p/w500/' + m.poster_path}
               vote={m.vote_average}

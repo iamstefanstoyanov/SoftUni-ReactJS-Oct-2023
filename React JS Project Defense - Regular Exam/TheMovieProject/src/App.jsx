@@ -13,6 +13,7 @@ import Profile from '../compoments/Profile';
 import MovieDetails from '../compoments/MovieDetails';
 import NotFound from '../compoments/NotFound';
 import Logout from '../compoments/Logout';
+import EditComment from '../compoments/EditComment';
 
 function App() {
   return (
@@ -29,6 +30,7 @@ function App() {
             <Route path='/logout' element={<Logout />} />
             <Route path='/profile' element={<Profile />} />
             <Route path='/moviedetails/:id' element={<MovieDetails />} />
+            <Route path='/editcomment/:id' element={<EditComment />} />
             <Route path='*' element={<NotFound />} />
           </Routes>
         </div>

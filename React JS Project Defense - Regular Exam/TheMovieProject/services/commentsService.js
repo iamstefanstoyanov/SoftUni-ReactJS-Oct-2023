@@ -53,3 +53,9 @@ export const addComment = async (username, inputs, title, id) => {
   const result = await response.json();
   return result;
 };
+export const getCurrentComment = async (id) => {
+  const url = `http://localhost:3030/data/comments/${id}`;
+
+  const data = await (await fetch(url, options)).json();
+  return data;
+};

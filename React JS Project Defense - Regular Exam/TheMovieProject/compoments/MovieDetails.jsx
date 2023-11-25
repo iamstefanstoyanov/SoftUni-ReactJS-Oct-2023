@@ -9,6 +9,8 @@ import {
 import Spinner from './Spinner';
 import { addToWatchlist } from '../services/watchlistService';
 import { useContext } from 'react';
+import { formatDate } from '../utils/dataUtils';
+
 import AuthContext from '../context/authContext';
 import Login from './Login';
 import useForm from '../hooks/useForm';
@@ -35,10 +37,10 @@ export default function MovieDetails() {
   const addCommentHandler = (inputs) => {
     addComment(username, inputs, movieDetails.title, id);
     addToList(username, inputs.text, movieDetails.title, id);
-    inputs[formKeys.text]='';
+    inputs[formKeys.text] = '';
   };
-  const addToList = (username,comment,title,id) => {
-    setMovieComments(list => [...list, { username,comment,title,id }]);
+  const addToList = (username, comment, title, id) => {
+    setMovieComments((list) => [...list, { username, comment, title, id }]);
   };
 
   const { inputs, onChangeInput, submitForm } = useForm(addCommentHandler, {
@@ -125,6 +127,10 @@ export default function MovieDetails() {
                         <p className='comment-p'>
                           <span>User:</span> {c.username}
                         </p>
+                        <p className='comment-p'>
+                          <span>Created on:</span> {formatDate(c._createdOn)}
+                        </p>
+
                         <hr />
                         <p className='comment'>
                           <span>Comment:</span> {c.comment}
@@ -149,7 +155,7 @@ export default function MovieDetails() {
                     value={inputs[formKeys.text]}
                     onChange={onChangeInput}
                     placeholder='Comment......'
-                  ></textarea>
+                  />
                   <input
                     className='btn-submit'
                     type='submit'
