@@ -22,7 +22,6 @@ export default function ProfileComments() {
     setIsLoading(true);
     getCurrentUserComments(userId)
       .then(setUserComments)
-      .catch((error) => console.log(error))
       .finally(() => setIsLoading(false));
   }, [updatedComments]);
 
