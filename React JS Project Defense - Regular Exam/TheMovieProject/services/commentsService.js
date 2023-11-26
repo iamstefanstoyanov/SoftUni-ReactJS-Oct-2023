@@ -1,10 +1,11 @@
-const options = {
-  method: 'GET',
-};
 export const getCurrentMovieComments = async (id) => {
   const url = `http://localhost:3030/data/comments?where=movieId%3D%22${id}%22`;
 
-  const data = await (await fetch(url, options)).json();
+  const data = await (
+    await fetch(url, {
+      method: 'GET',
+    })
+  ).json();
   return Object.values(data);
 };
 export const getCurrentUserComments = async (userId) => {
@@ -56,6 +57,30 @@ export const addComment = async (username, inputs, title, id) => {
 export const getCurrentComment = async (id) => {
   const url = `http://localhost:3030/data/comments/${id}`;
 
-  const data = await (await fetch(url, options)).json();
+  const data = await (
+    await fetch(url, {
+      method: 'GET',
+    })
+  ).json();
   return data;
+};
+export const editComment = async (newComment) => {
+  const token = localStorage.getItem('accessToken');
+  const url = `http://localhost:3030/data/comments/${newComment._id}`;
+  const body = {
+    username: newComment.username,
+    comment: newComment.comment,
+    title: newComment.title,
+    movieId: newComment.movieId,
+  };
+  const response = await fetch(url, {
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'application/json',
+      'X-Authorization': token,
+    },
+    body: JSON.stringify(body),
+  });
+  const result = await response.json();
+  return result;
 };

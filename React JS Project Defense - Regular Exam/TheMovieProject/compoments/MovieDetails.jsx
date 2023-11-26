@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { getOneMovie } from '../services/moviesService';
 import {
@@ -36,16 +36,20 @@ export default function MovieDetails() {
   };
   const addCommentHandler = (inputs) => {
     addComment(username, inputs, movieDetails.title, id);
-    addToList(username, inputs.text, movieDetails.title, id);
+    getCurrentMovieComments(id).then(setMovieComments);
     inputs[formKeys.text] = '';
   };
-  const addToList = (username, comment, title, id) => {
-    setMovieComments((list) => [...list, { username, comment, title, id }]);
-  };
-
-  const { inputs, onChangeInput, submitForm } = useForm(addCommentHandler, {
-    [formKeys.text]: '',
-  });
+  //TODO....find more elegant solution
+  const initialMovieComments = useMemo(
+    () => ({
+      [formKeys.text]: '',
+    }),
+    []
+  );
+  const { inputs, onChangeInput, submitForm } = useForm(
+    addCommentHandler,
+    initialMovieComments
+  );
   return (
     <>
       {isAuth && (

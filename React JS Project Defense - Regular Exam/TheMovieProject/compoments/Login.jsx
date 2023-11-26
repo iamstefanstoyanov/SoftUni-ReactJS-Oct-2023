@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+import { useContext, useMemo } from 'react';
 import { Link } from 'react-router-dom';
 
 import AuthContext from '../context/authContext';
@@ -11,10 +11,18 @@ const formKeys = {
 
 export default function Login() {
   const { loginHandler } = useContext(AuthContext);
-  const { inputs, onChangeInput, submitForm } = useForm(loginHandler, {
-    [formKeys.email]: '',
-    [formKeys.password]: '',
-  });
+  //TODO....find more elegant solution
+  const initialValues = useMemo(
+    () => ({
+      [formKeys.email]: '',
+      [formKeys.password]: '',
+    }),
+    []
+  );
+  const { inputs, onChangeInput, submitForm } = useForm(
+    loginHandler,
+    initialValues
+  );
 
   return (
     <div className='signup-container'>

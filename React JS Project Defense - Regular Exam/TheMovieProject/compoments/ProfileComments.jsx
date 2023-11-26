@@ -1,4 +1,4 @@
-import { useEffect, useState, useContext } from 'react';
+import { useEffect, useState, useContext, useMemo } from 'react';
 import {
   deleteComment,
   getCurrentUserComments,
@@ -11,13 +11,16 @@ export default function ProfileComments() {
   const [userComments, setUserComments] = useState({});
   const { userId } = useContext(AuthContext);
   const [isLoading, setIsLoading] = useState(false);
+  let updatedComments = useMemo(() => {
+    setUserComments(userComments);
+  }, [userComments]);
   useEffect(() => {
     setIsLoading(true);
     getCurrentUserComments(userId)
       .then(setUserComments)
       .catch((error) => console.log(error))
       .finally(() => setIsLoading(false));
-  }, []);
+  }, [updatedComments]);
   const deleteHandler = (e, id) => {
     deleteComment(id);
     setUserComments(userComments.filter((c) => c._id !== id));
