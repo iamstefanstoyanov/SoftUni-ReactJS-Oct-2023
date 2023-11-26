@@ -16,6 +16,7 @@ export default function useForm(submitHandler, initialValues) {
 
   const submitForm = (e) => {
     e.preventDefault();
+
     submitHandler(inputs);
   };
 
@@ -25,19 +26,36 @@ export default function useForm(submitHandler, initialValues) {
     submitForm,
   };
 }
-/* const handleSubmit = (e) => {
-        const emailPattern = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i;
-        if (formData.password !== formData.rePassword) {
-          console.log('Passwords do not match!');
-          return;
-        }
-        if (formData.username.length <= 4) {
-          console.log('Username must be at least 5 characters!');
-          return;
-        }
-        if (!emailPattern.test(formData.email)) {
-          console.log('Invalid Email!');
-          return;
-        }
-        
-      }; */
+
+/*   const [errors, setErrors] = useState({});
+const validateInputs = () => {
+  let valid = true;
+  let newErrors = {};
+
+  if (inputs.username.trim().length <= 4) {
+    newErrors.username = 'Username must be at least 4 characters!';
+    valid = false;
+  }
+
+  const emailPattern = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i;
+  if (!emailPattern.test(inputs.email)) {
+    newErrors.email = 'Invalid email address';
+    valid = false;
+  }
+
+  if (inputs.password.length <= 4) {
+    newErrors.password = 'Password must be at least 5 characters long';
+    valid = false;
+  }
+  if (inputs.password !== inputs.repass) {
+    newErrors.password ='Passwords do not match!';
+    valid = false;
+  }
+
+  setErrors(newErrors);
+  return valid;
+};
+if (validateInputs()) {
+} else {
+  return errors;
+} */

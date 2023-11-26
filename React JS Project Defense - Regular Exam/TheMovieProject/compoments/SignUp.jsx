@@ -30,7 +30,6 @@ export default function SignUp() {
     registerHandler,
     initialValues
   );
-
   return (
     <div className='signup-container'>
       <div className='signup'>
@@ -49,7 +48,6 @@ export default function SignUp() {
               onChange={onChangeInput}
               value={inputs[formKeys.username]}
             />
-
             <input
               type='email'
               placeholder='Email'
