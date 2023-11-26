@@ -80,7 +80,7 @@ h4 {
     gap: 0.5em;
 }
 
-.add-comment,.movie-comments-container .comments li {
+.movie-comments-container .comments li,.edit-comment-container,.add-comment {
     width: 45%;
     border-radius: 10px;
     background-color: rgba(107, 107, 107, 0.3);
@@ -120,10 +120,11 @@ hr {
 }
 textarea{
     width: 100%;
-    max-width: 100%;
-    height: 5em;
+    height: 6em;
+    resize: none;
     background-color: rgb(196, 196, 196);
     padding: 0.5em;
+    border-radius: 0.5em;
 }
 .add-comment .btn-submit {
     margin-top: 0.5em;

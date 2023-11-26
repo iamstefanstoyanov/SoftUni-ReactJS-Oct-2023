@@ -256,8 +256,8 @@
 .profile:hover,
 .logout:hover,
 .card-btn:hover,
-.edit-comment:hover,
-.delete-comment:hover {
+.edit-comment-btn:hover,
+.delete-comment-btn:hover {
   background: #a5810a;
   cursor:pointer;
 }

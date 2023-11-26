@@ -50,12 +50,12 @@ export default function ProfileComments() {
               </p>
               <div className='edit-delete-comments-btns'>
                 <Link to={`/editcomment/${c._id}`}>
-                  <button className='edit-comment' type='button'>
+                  <button className='edit-comment-btn' type='button'>
                     <span>Edit</span>
                   </button>
                 </Link>
                 <button
-                  className='delete-comment'
+                  className='delete-comment-btn'
                   onClick={(e) => deleteHandler(e, c._id)}
                 >
                   Delete

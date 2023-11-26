@@ -15,7 +15,6 @@ export default function EditComment() {
   const [isLoading, setIsLoading] = useState(false);
   const { id } = useParams();
   const [comment, setComment] = useState({});
-
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -40,20 +39,27 @@ export default function EditComment() {
       <h1>Edit Comment</h1>
       {isLoading && <Spinner />}
       {!isLoading && (
-        <div className='edit-comment'>
-          <form className='form' onSubmit={submitForm}>
+        <div className='edit-comment-container movie-comments-container'>
+          <form className='edit-form' onSubmit={submitForm}>
             <textarea
+              className='textarea'
               type='text'
               name={formKeys.text}
               value={inputs[formKeys.text]}
               onChange={onChangeInput}
             />
-            <Link to='/profile'>
-              <button type='button' className='close'>
-                Close
-              </button>
-            </Link>
-            <input className='btn-submit' type='submit' value='Edit Comment' />
+            <div className='edit-del-btns'>
+              <input
+                className='edit-btn-submit'
+                type='submit'
+                value='Edit Comment'
+              />
+              <Link to='/profile'>
+                <button type='button' className='close-btn'>
+                  Close
+                </button>
+              </Link>
+            </div>
           </form>
         </div>
       )}

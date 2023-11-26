@@ -44,7 +44,7 @@
     opacity: 0.6;
 }
 
-.form .btn-submit {
+.form .btn-submit,.edit-btn-submit,.close-btn {
   background-color: #3267ac;
   color: #000000;
   font-size: 16px;
@@ -55,7 +55,7 @@
   width: 100%;
   margin-top: 20px;
 }
-.form .btn-submit:hover{
+.form .btn-submit:hover,.edit-btn-submit:hover,.close-btn:hover{
     color: white;
     background-color:#478de7;
     cursor:pointer;
