@@ -8,6 +8,7 @@ export const getCurrentMovieComments = async (id) => {
   ).json();
   return Object.values(data);
 };
+
 export const getCurrentUserComments = async (userId) => {
   try {
     const url = `http://localhost:3030/data/comments?where=_ownerId%3D%22${userId}%22`;
@@ -17,6 +18,7 @@ export const getCurrentUserComments = async (userId) => {
     console.log(error);
   }
 };
+
 export const deleteComment = async (id) => {
   const token = localStorage.getItem('accessToken');
 
@@ -54,6 +56,7 @@ export const addComment = async (username, inputs, title, id) => {
   const result = await response.json();
   return result;
 };
+
 export const getCurrentComment = async (id) => {
   const url = `http://localhost:3030/data/comments/${id}`;
 
@@ -64,6 +67,7 @@ export const getCurrentComment = async (id) => {
   ).json();
   return data;
 };
+
 export const editComment = async (newComment) => {
   const token = localStorage.getItem('accessToken');
   const url = `http://localhost:3030/data/comments/${newComment._id}`;

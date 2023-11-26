@@ -1,7 +1,7 @@
+import { useContext } from 'react';
 import { Link } from 'react-router-dom';
 
 import Clock from './Clock';
-import { useContext } from 'react';
 import AuthContext from '../context/authContext';
 
 export default function Navbar() {

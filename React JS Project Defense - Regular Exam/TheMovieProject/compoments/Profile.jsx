@@ -1,9 +1,12 @@
+import { useContext } from 'react';
+
 import ProfileComments from './ProfileComments';
 import ProfileWatchlist from './ProfileWatchlist';
-import { useContext } from 'react';
 import AuthContext from '../context/authContext';
+
 export default function Profile() {
   const { username, email, imgUrl } = useContext(AuthContext);
+  
   return (
     <div className='profile-container'>
       <div className='main-profile-info'>

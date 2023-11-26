@@ -13,6 +13,7 @@ export const deleteFromWatchlist = async (id) => {
   ).json();
   return data;
 };
+
 export const addToWatchlist = async (data) => {
   const token = localStorage.getItem('accessToken');
 
@@ -36,6 +37,7 @@ export const addToWatchlist = async (data) => {
   const result = await response.json();
   return result;
 };
+
 export const getCurrentUserWatchlist = async (userId) => {
   try {
     const url = `http://localhost:3030/data/watchlists?where=_ownerId%3D%22${userId}%22`;

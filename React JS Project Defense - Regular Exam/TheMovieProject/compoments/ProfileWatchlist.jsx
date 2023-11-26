@@ -1,22 +1,26 @@
-import { deleteFromWatchlist } from '../services/watchlistService';
-import Card from './Card';
 import { useContext, useEffect, useState } from 'react';
-import AuthContext from '../context/authContext';
+
+import Card from './Card';
+import { deleteFromWatchlist } from '../services/watchlistService';
 import { getCurrentUserWatchlist } from '../services/watchlistService';
+import AuthContext from '../context/authContext';
+
 export default function ProfileWatchlist() {
   const { userId } = useContext(AuthContext);
   const [currentUserWatchlist, setCurrentUserWatchlist] = useState({});
+
   useEffect(() => {
-    getCurrentUserWatchlist(userId)
-    .then((data) => {
+    getCurrentUserWatchlist(userId).then((data) => {
       setCurrentUserWatchlist(data);
     });
-  },[]);
+  }, []);
+
   const removeFromWatchlist = (e, id) => {
     e.preventDefault();
     deleteFromWatchlist(id);
     setCurrentUserWatchlist(currentUserWatchlist.filter((m) => m._id !== id));
   };
+
   return (
     <>
       {!currentUserWatchlist.length == 0 ? (

@@ -1,16 +1,20 @@
-import { useContext,useMemo } from 'react';
+import { useContext, useMemo } from 'react';
 import { Link } from 'react-router-dom';
+
 import AuthContext from '../context/authContext';
 import useForm from '../hooks/useForm';
+
 const formKeys = {
   username: 'username',
   email: 'email',
   password: 'password',
   repass: 'repass',
-  url:'imgUrl'
+  url: 'imgUrl',
 };
+
 export default function SignUp() {
-  const {registerHandler} =useContext(AuthContext);
+  const { registerHandler } = useContext(AuthContext);
+
   //TODO....find more elegant solution
   const initialValues = useMemo(
     () => ({
@@ -22,8 +26,11 @@ export default function SignUp() {
     }),
     []
   );
-  const {inputs,onChangeInput,submitForm} = useForm(registerHandler,initialValues)
-   
+  const { inputs, onChangeInput, submitForm } = useForm(
+    registerHandler,
+    initialValues
+  );
+
   return (
     <div className='signup-container'>
       <div className='signup'>

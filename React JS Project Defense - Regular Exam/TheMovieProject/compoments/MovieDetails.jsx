@@ -1,28 +1,30 @@
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useMemo, useContext, useState } from 'react';
 import { useParams } from 'react-router-dom';
+
 import { getOneMovie } from '../services/moviesService';
 import {
   addComment,
   getCurrentMovieComments,
 } from '../services/commentsService';
-
 import Spinner from './Spinner';
 import { addToWatchlist } from '../services/watchlistService';
-import { useContext } from 'react';
 import { formatDate } from '../utils/dataUtils';
 
 import AuthContext from '../context/authContext';
 import Login from './Login';
 import useForm from '../hooks/useForm';
+
 const formKeys = {
   text: 'text',
 };
+
 export default function MovieDetails() {
   const { id } = useParams();
   const [movieDetails, setMovieDetails] = useState([]);
   const [movieComments, setMovieComments] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const { isAuth, userId, username } = useContext(AuthContext);
+
   useEffect(() => {
     setIsLoading(true);
     getOneMovie(id).then(setMovieDetails);
@@ -31,9 +33,11 @@ export default function MovieDetails() {
       .catch((error) => console.log(error))
       .finally(() => setIsLoading(false));
   }, [id]);
+
   const addToWatchlistHandler = () => {
     addToWatchlist(movieDetails, userId);
   };
+
   const addCommentHandler = (inputs) => {
     addComment(username, inputs, movieDetails.title, id);
     getCurrentMovieComments(id).then(setMovieComments);

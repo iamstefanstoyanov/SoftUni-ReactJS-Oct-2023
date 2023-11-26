@@ -1,4 +1,5 @@
 const url = `http://localhost:3030/users`;
+
 export const login = async (email, password) => {
   try {
     const response = await fetch(`${url}/login`, {
@@ -20,6 +21,7 @@ export const login = async (email, password) => {
     console.log(err);
   }
 };
+
 export const register = async (username, password, email, imgUrl) => {
   try {
     const response = await fetch(`${url}/register`, {
@@ -40,9 +42,10 @@ export const register = async (username, password, email, imgUrl) => {
     const data = await response.json();
     return data;
   } catch (err) {
-    console.log(err)
+    console.log(err);
   }
 };
+
 export const logout = async () => {
   const token = localStorage.getItem('accessToken');
 
@@ -52,5 +55,5 @@ export const logout = async () => {
       'X-Authorization': token,
     },
   });
-  return result
+  return result;
 };

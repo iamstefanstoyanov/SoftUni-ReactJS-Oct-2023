@@ -8,8 +8,10 @@ const AuthContext = createContext();
 export const AuthProvider = ({ children }) => {
   const [auth, setAuth] = useState({});
   const navigate = useNavigate();
+
   const loginHandler = async (inputs) => {
     const result = await login(inputs.email, inputs.password);
+
     if (result !== undefined) {
       localStorage.setItem('accessToken', result.accessToken);
       setAuth(result);
@@ -18,6 +20,7 @@ export const AuthProvider = ({ children }) => {
       navigate('/login');
     }
   };
+
   const registerHandler = async (inputs) => {
     const result = await register(
       inputs.username,
@@ -25,6 +28,7 @@ export const AuthProvider = ({ children }) => {
       inputs.email,
       inputs.imgUrl
     );
+
     if (result !== undefined) {
       localStorage.setItem('accessToken', result.accessToken);
       setAuth(result);
@@ -33,10 +37,12 @@ export const AuthProvider = ({ children }) => {
       navigate('/signup');
     }
   };
+
   const logoutHandler = () => {
     setAuth({});
     localStorage.removeItem('accessToken');
   };
+
   const data = {
     loginHandler,
     registerHandler,
@@ -44,7 +50,7 @@ export const AuthProvider = ({ children }) => {
     username: auth.username,
     email: auth.email,
     imgUrl: auth.imgUrl,
-    userId:auth._id,
+    userId: auth._id,
     isAuth: !!auth.username,
   };
   return <AuthContext.Provider value={data}>{children}</AuthContext.Provider>;

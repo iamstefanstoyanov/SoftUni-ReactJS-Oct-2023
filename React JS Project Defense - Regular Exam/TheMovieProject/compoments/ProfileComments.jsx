@@ -1,19 +1,23 @@
 import { useEffect, useState, useContext, useMemo } from 'react';
+import { Link } from 'react-router-dom';
+
+import Spinner from './Spinner';
 import {
   deleteComment,
   getCurrentUserComments,
 } from '../services/commentsService';
-import Spinner from './Spinner';
 import AuthContext from '../context/authContext';
 import { formatDate } from '../utils/dataUtils';
-import { Link } from 'react-router-dom';
+
 export default function ProfileComments() {
   const [userComments, setUserComments] = useState({});
   const { userId } = useContext(AuthContext);
   const [isLoading, setIsLoading] = useState(false);
+
   let updatedComments = useMemo(() => {
     setUserComments(userComments);
   }, [userComments]);
+
   useEffect(() => {
     setIsLoading(true);
     getCurrentUserComments(userId)
@@ -21,10 +25,12 @@ export default function ProfileComments() {
       .catch((error) => console.log(error))
       .finally(() => setIsLoading(false));
   }, [updatedComments]);
+
   const deleteHandler = (e, id) => {
     deleteComment(id);
     setUserComments(userComments.filter((c) => c._id !== id));
   };
+
   return (
     <>
       {isLoading && <Spinner />}

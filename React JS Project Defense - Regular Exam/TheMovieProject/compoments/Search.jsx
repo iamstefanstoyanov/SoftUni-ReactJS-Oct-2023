@@ -1,12 +1,13 @@
 import { useState, useEffect } from 'react';
 import { Pagination } from '@mui/material';
 import { useContext } from 'react';
-import { searchForMovies } from '../services/moviesService';
 
+import { searchForMovies } from '../services/moviesService';
 import AuthContext from '../context/authContext';
 import MoviesList from './MoviesList';
 import Spinner from './Spinner';
 import Login from './Login';
+
 export default function Search() {
   const [input, setInput] = useState('');
   const [movies, setMoives] = useState([]);
@@ -77,7 +78,7 @@ export default function Search() {
           </div>
         </>
       )}
-      {!isAuth && <Login/>}
+      {!isAuth && <Login />}
     </>
   );
 }

@@ -11,7 +11,7 @@ export default function Card({
   image,
   vote,
   remove,
-  isProfile
+  isProfile,
 }) {
   const { isAuth } = useContext(AuthContext);
   return (
