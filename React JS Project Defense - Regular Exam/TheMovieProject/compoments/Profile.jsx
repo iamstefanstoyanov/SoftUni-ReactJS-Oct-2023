@@ -3,9 +3,9 @@ import { useContext } from 'react';
 import ProfileComments from './ProfileComments';
 import ProfileWatchlist from './ProfileWatchlist';
 import AuthContext from '../context/authContext';
-
+import { formatDate } from '../utils/dataUtils';
 export default function Profile() {
-  const { username, email, imgUrl } = useContext(AuthContext);
+  const { username, email, imgUrl,registeredOn } = useContext(AuthContext);
   
   return (
     <div className='profile-container'>
@@ -19,6 +19,9 @@ export default function Profile() {
           </p>
           <p>
             <span>Email:</span> {email}
+          </p>
+          <p>
+            <span>Registerd on:</span> {formatDate(registeredOn)}
           </p>
         </div>
       </div>

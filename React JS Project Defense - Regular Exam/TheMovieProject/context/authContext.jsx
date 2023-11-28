@@ -51,6 +51,7 @@ export const AuthProvider = ({ children }) => {
     email: auth.email,
     imgUrl: auth.imgUrl,
     userId: auth._id,
+    registeredOn: auth._createdOn,
     isAuth: !!auth.username,
   };
   return <AuthContext.Provider value={data}>{children}</AuthContext.Provider>;
