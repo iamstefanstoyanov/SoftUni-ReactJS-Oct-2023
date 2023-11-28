@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useContext, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 import { getOneMovie } from '../services/moviesService';
 import {
@@ -88,7 +89,13 @@ export default function MovieDetails() {
                     <span>Homepage:</span> {movieDetails.homepage}
                   </p>
                   <p>
+                    <span>Link to: </span> <Link to={`https://www.imdb.com/title/${movieDetails.imdb_id}`} target='blank'> IMDB</Link>
+                  </p>
+                  <p>
                     <span>Overview:</span> {movieDetails.overview}
+                  </p>
+                  <p>
+                    <span>Durution:</span> {movieDetails.runtime} min.
                   </p>
                   <p className='prodCompanies'>
                     <span>Production Companies:</span>{' '}

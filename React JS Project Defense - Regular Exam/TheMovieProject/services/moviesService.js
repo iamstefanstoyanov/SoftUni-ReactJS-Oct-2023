@@ -38,6 +38,7 @@ export const getOneMovie = async (id) => {
   try {
     const url = `https://api.themoviedb.org/3/movie/${id}?language=en-US`;
     const data = await (await fetch(url, optionsTMDB)).json();
+    console.log(data)
     return data;
   } catch (error) {
     console.log(error);
