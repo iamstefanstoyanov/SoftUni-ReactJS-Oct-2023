@@ -30,14 +30,13 @@ export default function MovieDetails() {
     setIsLoading(true);
     getOneMovie(id).then(setMovieDetails);
     getCurrentMovieComments(id).then(setMovieComments);
-    getCurrentUserWatchlist(userId)
-      .then(setExists)
+    getCurrentUserWatchlist(userId).then(setExists)
       .catch((error) => console.log(error))
       .finally(() => setIsLoading(false));
   }, [id]);
 
-  const addToWatchlistHandler = () => {
-    addToWatchlist(movieDetails, userId);
+  const addToWatchlistHandler = async () => {
+    await addToWatchlist(movieDetails, userId);
     getCurrentUserWatchlist(userId).then(setExists);
   };
 
