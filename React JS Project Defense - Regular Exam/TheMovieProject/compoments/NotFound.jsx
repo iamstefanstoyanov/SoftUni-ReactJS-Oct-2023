@@ -1,5 +1,7 @@
 export default function NotFound(){
     return(
-        <div>Not found!</div>
+        <>
+        <img style={{ width: '40%'}}className="404" src="./images/404.jpg" alt="404 Not Found" />
+        </>
     )
 }
