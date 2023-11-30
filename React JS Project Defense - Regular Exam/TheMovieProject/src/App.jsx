@@ -19,24 +19,26 @@ import Guard from '../guards/Guards';
 function App() {
   return (
     <AuthProvider>
-        <Navbar />
-        <div className='main-container'>
-          <Routes>
-            <Route path='/' element={<HomePage />} />
-            <Route path='/catalog' element={<Catalog />} />
+      <Navbar />
+      <div className='main-container'>
+        <Routes>
+          <Route path='/' element={<HomePage />} />
+          <Route path='/catalog' element={<Catalog />} />
+          <Route path='/nowplaying' element={<NowPlaying />} />
+          <Route path='/login' element={<Login />} />
+          <Route path='/signup' element={<SignUp />} />
+          <Route path='*' element={<NotFound />} />
+          <Route element={<Guard/>}>
             <Route path='/search' element={<Search />} />
-            <Route path='/nowplaying' element={<NowPlaying />} />
-            <Route path='/login' element={<Login />} />
-            <Route path='/signup' element={<SignUp />} />
-            <Route path='/logout' element={<Logout />} />
             <Route path='/profile' element={<Profile />} />
             <Route path='/moviedetails/:id' element={<MovieDetails />} />
             <Route path='/editcomment/:id' element={<EditComment />} />
-            <Route path='*' element={<NotFound />} />
-          </Routes>
-        </div>
-        <Footer />
-      </AuthProvider>
+            <Route path='/logout' element={<Logout />} />
+          </Route>
+        </Routes>
+      </div>
+      <Footer />
+    </AuthProvider>
   );
 }
 

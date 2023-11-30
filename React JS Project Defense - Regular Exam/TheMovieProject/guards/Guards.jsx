@@ -1,14 +1,13 @@
 import { useContext } from 'react';
-import { Navigate } from 'react-router-dom';
+import { Navigate, Outlet } from 'react-router-dom';
 import AuthContext from '../context/authContext';
 
-export default function Guard(props) {
-
+export default function Guard() {
   const { isAuth } = useContext(AuthContext);
 
   if (!isAuth) {
     return <Navigate to='/login' />;
   }
-  
-  return <>{props.children}</>;
+
+  return <Outlet />;
 }
