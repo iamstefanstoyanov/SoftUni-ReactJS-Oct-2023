@@ -1,4 +1,3 @@
-const token = JSON.parse(localStorage.getItem('auth')).accessToken
 export const getCurrentMovieComments = async (id) => {
   const url = `http://localhost:3030/data/comments?where=movieId%3D%22${id}%22`;
   try {
@@ -25,6 +24,7 @@ export const getCurrentUserComments = async (userId) => {
 
 export const deleteComment = async (id) => {
   const url = `http://localhost:3030/data/comments/${id}`;
+  const token = JSON.parse(localStorage.getItem('auth')).accessToken;
 
   try {
     const data = await (
@@ -43,6 +43,8 @@ export const deleteComment = async (id) => {
 
 export const addComment = async (username, inputs, title, id) => {
   const url = `http://localhost:3030/data/comments`;
+  const token = JSON.parse(localStorage.getItem('auth')).accessToken;
+
   try {
     const body = {
       username: username,
@@ -81,6 +83,8 @@ export const getCurrentComment = async (id) => {
 
 export const editComment = async (newComment) => {
   const url = `http://localhost:3030/data/comments/${newComment._id}`;
+  const token = JSON.parse(localStorage.getItem('auth')).accessToken;
+
   try {
     const body = {
       username: newComment.username,

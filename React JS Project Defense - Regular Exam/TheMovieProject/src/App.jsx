@@ -14,6 +14,7 @@ import MovieDetails from '../compoments/MovieDetails';
 import NotFound from '../compoments/NotFound';
 import Logout from '../compoments/Logout';
 import EditComment from '../compoments/EditComment';
+import Guard from '../guards/Guards';
 
 function App() {
   return (

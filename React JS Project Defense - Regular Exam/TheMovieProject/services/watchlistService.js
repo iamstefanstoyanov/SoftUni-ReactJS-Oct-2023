@@ -1,7 +1,6 @@
-const token = JSON.parse(localStorage.getItem('auth')).accessToken;
-
 export const deleteFromWatchlist = async (id) => {
   const url = `http://localhost:3030/data/watchlists/${id}`;
+  const token = JSON.parse(localStorage.getItem('auth')).accessToken;
 
   try {
     const data = await (
@@ -20,6 +19,7 @@ export const deleteFromWatchlist = async (id) => {
 
 export const addToWatchlist = async (data) => {
   const url = `http://localhost:3030/data/watchlists`;
+  const token = JSON.parse(localStorage.getItem('auth')).accessToken;
 
   try {
     const body = {

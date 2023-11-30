@@ -1,12 +1,9 @@
 import { useState, useEffect } from 'react';
 import { Pagination } from '@mui/material';
-import { useContext } from 'react';
 
 import { searchForMovies } from '../services/moviesService';
-import AuthContext from '../context/authContext';
 import MoviesList from './MoviesList';
 import Spinner from './Spinner';
-import Login from './Login';
 
 export default function Search() {
   const [input, setInput] = useState('');
@@ -14,7 +11,6 @@ export default function Search() {
   const [totalPages, setTotalPages] = useState(1);
   const [page, setPage] = useState(1);
   const [isLoading, setIsLoading] = useState(false);
-  const { isAuth } = useContext(AuthContext);
 
   useEffect(() => {
     setIsLoading(true);
@@ -37,48 +33,43 @@ export default function Search() {
 
   return (
     <>
-      {isAuth && (
-        <>
-          <h1>Search</h1>
-          <div className='search-container'>
-            <div className='search'>
-              <input
-                type='text'
-                value={input}
-                className='searchTerm'
-                onChange={(e) => handleSubmit(e.target.value)}
-                placeholder='Search for your favorite movie...'
-              />
-            </div>
-            <div className='movies-list-container'>
-              {isLoading && <Spinner />}
+      <h1>Search</h1>
+      <div className='search-container'>
+        <div className='search'>
+          <input
+            type='text'
+            value={input}
+            className='searchTerm'
+            onChange={(e) => handleSubmit(e.target.value)}
+            placeholder='Search for your favorite movie...'
+          />
+        </div>
+        <div className='movies-list-container'>
+          {isLoading && <Spinner />}
 
-              {movies.map((movie) => (
-                <MoviesList
-                  key={movie.id}
-                  id={movie.id}
-                  title={movie.title}
-                  relDate={movie.release_date}
-                  description={movie.overview}
-                  image={'https://image.tmdb.org/t/p/w500/' + movie.poster_path}
-                  vote={movie.vote_average}
-                />
-              ))}
-            </div>
-            {!movies.length == 0 && (
-              <div>
-                <Pagination
-                  onChange={handlePageChange}
-                  count={totalPages}
-                  variant='outlined'
-                  shape='rounded'
-                />
-              </div>
-            )}
+          {movies.map((movie) => (
+            <MoviesList
+              key={movie.id}
+              id={movie.id}
+              title={movie.title}
+              relDate={movie.release_date}
+              description={movie.overview}
+              image={'https://image.tmdb.org/t/p/w500/' + movie.poster_path}
+              vote={movie.vote_average}
+            />
+          ))}
+        </div>
+        {!movies.length == 0 && (
+          <div>
+            <Pagination
+              onChange={handlePageChange}
+              count={totalPages}
+              variant='outlined'
+              shape='rounded'
+            />
           </div>
-        </>
-      )}
-      {!isAuth && <Login />}
+        )}
+      </div>
     </>
   );
 }
