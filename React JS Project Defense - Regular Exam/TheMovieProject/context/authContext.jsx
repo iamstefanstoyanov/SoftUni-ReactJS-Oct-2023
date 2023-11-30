@@ -13,7 +13,6 @@ export const AuthProvider = ({ children }) => {
     const result = await login(inputs.email, inputs.password);
 
     if (result !== undefined) {
-      localStorage.setItem('accessToken', result.accessToken);
       setAuth(result);
       navigate('/');
     } else {
@@ -30,7 +29,6 @@ export const AuthProvider = ({ children }) => {
     );
 
     if (result !== undefined) {
-      localStorage.setItem('accessToken', result.accessToken);
       setAuth(result);
       navigate('/');
     } else {
@@ -40,7 +38,7 @@ export const AuthProvider = ({ children }) => {
 
   const logoutHandler = () => {
     setAuth({});
-    localStorage.removeItem('accessToken');
+    localStorage.removeItem('auth');
   };
 
   const data = {

@@ -47,7 +47,7 @@ export const register = async (username, password, email, imgUrl) => {
 };
 
 export const logout = async () => {
-  const token = localStorage.getItem('accessToken');
+  const token = JSON.parse(localStorage.getItem('auth')).accessToken;
 
   const result = await fetch(`${url}/logout`, {
     method: 'GET',
