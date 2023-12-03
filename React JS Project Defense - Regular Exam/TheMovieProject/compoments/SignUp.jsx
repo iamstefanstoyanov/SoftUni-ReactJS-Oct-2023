@@ -25,11 +25,10 @@ export default function SignUp() {
     }),
     []
   );
-  const { inputs,errors, onChangeInput,validateInputs, submitForm } = useForm(
+  const { inputs, errors, onChangeInput, submitForm } = useForm(
     registerHandler,
     initialValues
   );
-  console.log(errors)
   return (
     <div className='signup-container'>
       <div className='signup'>
@@ -46,57 +45,55 @@ export default function SignUp() {
               placeholder='Username...'
               name={formKeys.username}
               onChange={onChangeInput}
-              onBlur={validateInputs}
               value={inputs[formKeys.username]}
             />
             {errors?.username && (
-                <span style={{ color: "red" }}>{errors.username}</span>
-              )}
+              <span style={{ color: 'red' }}>{errors.username}</span>
+            )}
             <input
               type='email'
               placeholder='Email'
               name={formKeys.email}
               onChange={onChangeInput}
-              onBlur={validateInputs}
               value={inputs[formKeys.email]}
             />
             {errors?.email && (
-                <span style={{ color: "red" }}>{errors.email}</span>
-              )}
+              <span style={{ color: 'red' }}>{errors.email}</span>
+            )}
             <input
               type='text'
               placeholder='Profile image URL'
               name={formKeys.url}
               onChange={onChangeInput}
-              onBlur={validateInputs}
               value={inputs[formKeys.url]}
             />
             {errors?.imgUrl && (
-                <span style={{ color: "red" }}>{errors.imgUrl}</span>
-              )}
+              <span style={{ color: 'red' }}>{errors.imgUrl}</span>
+            )}
             <input
               type='password'
               placeholder='Password'
               name={formKeys.password}
               onChange={onChangeInput}
-              onBlur={validateInputs}
               value={inputs[formKeys.password]}
             />
             {errors?.password && (
-                <span style={{ color: "red" }}>{errors.password}</span>
-              )}
+              <span style={{ color: 'red' }}>{errors.password}</span>
+            )}
             <input
               type='password'
               placeholder='Confirm password'
               name={formKeys.repass}
               onChange={onChangeInput}
-              onBlur={validateInputs}
               value={inputs[formKeys.repass]}
             />
             {errors?.repass && (
-                <span style={{ color: "red" }}>{errors.repass}</span>
-              )}
-            <input type='submit' className='btn-submit' value='SignUp' />
+              <span style={{ color: 'red' }}>{errors.repass}</span>
+            )}
+            <input type='submit' className='btn-submit' value='SignUp' disabled={Object.keys(errors).length > 0}/>
+            {Object.keys(errors).length > 0 && (
+              <span style={{ color: 'red' }}>Inavlid Form Data!</span>
+            )}
           </form>
         </div>
       </div>

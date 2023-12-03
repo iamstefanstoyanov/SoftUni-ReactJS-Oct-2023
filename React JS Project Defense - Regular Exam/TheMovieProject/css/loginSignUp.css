@@ -64,3 +64,11 @@
   color: #4796ff;
   text-decoration: underline;
 }
+.btn-submit:disabled{
+  background-color:#818181;
+
+}
+.btn-submit:disabled:hover{
+  background-color:#818181;
+  color: #000000;
+}
