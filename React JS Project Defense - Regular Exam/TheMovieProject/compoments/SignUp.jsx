@@ -93,6 +93,9 @@ export default function SignUp() {
               onBlur={validateInputs}
               value={inputs[formKeys.repass]}
             />
+            {errors?.repass && (
+                <span style={{ color: "red" }}>{errors.repass}</span>
+              )}
             <input type='submit' className='btn-submit' value='SignUp' />
           </form>
         </div>

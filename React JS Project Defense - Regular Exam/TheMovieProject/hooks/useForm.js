@@ -13,43 +13,52 @@ export default function useForm(submitHandler, initialValues) {
       [e.target.name]: e.target.value,
     }));
   };
+  let password = '';
   const validateInputs = (e) => {
-    let currentError = {};
+    const newState = { ...errors }
     const { name, value } = e.target;
     if (name === 'username') {
       if (value.trim().length <= 4) {
-        currentError['username'] = 'Username must be at least 4 characters!';
+        newState.username='Username must be at least 4 characters!';
+      }else{
+        delete newState.username
       }
     }
     if (name === 'email') {
       const emailPattern = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i;
       if (!emailPattern.test(value)) {
-        currentError['email'] = 'Invalid email address!';
+        newState.email = 'Invalid email address!';
+      }else{
+        delete newState.email
       }
 
     }
     if (name === 'imgUrl') {
       const urlPattern = /^https:\/\//;
       if (!urlPattern.test(value)) {
-        currentError['imgUrl'] = 'Invalid profile image format!';
+        newState.imgUrl = 'Invalid profile image format!';
+      }else{
+        delete newState.imgUrl
       }
 
     }
+
     if (name === 'password') {
       if (value.length <= 4) {
-        currentError['password'] = 'Password must be at least 5 characters long';
-      }
-
+        password =value;
+        newState.password = 'Password must be at least 5 characters long';
+      }else{
+        delete newState.password
+      } 
     }
-    if (name === 'repass') {
-      if(value!== currentError.password){
-        currentError['repass'] = 'Passwords don\'t match!';
-      }
-
+    if(name === 'repass' && value !== password){
+      newState.repass = 'Passwords don\'t match!';
+    }else{
+      delete newState.repass
     }
-    setErrors(currentError);
+    setErrors(newState);
   };
-
+  console.log(errors)
   const submitForm = (e) => {
     e.preventDefault();
 
