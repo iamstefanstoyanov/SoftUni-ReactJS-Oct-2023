@@ -11,6 +11,7 @@ const formKeys = {
 
 export default function Login() {
   const { loginHandler } = useContext(AuthContext);
+
   //TODO....find more elegant solution
   const initialValues = useMemo(
     () => ({
@@ -19,11 +20,12 @@ export default function Login() {
     }),
     []
   );
+
   const { inputs, onChangeInput, submitForm } = useForm(
     loginHandler,
     initialValues
   );
-
+  
   return (
     <div className='signup-container'>
       <div className='login-container'>
