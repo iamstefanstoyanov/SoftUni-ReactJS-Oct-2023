@@ -11,7 +11,6 @@ export const AuthProvider = ({ children }) => {
 
   const loginHandler = async (inputs) => {
     const result = await login(inputs.email, inputs.password);
-
     if (result !== undefined) {
       setAuth(result);
       navigate('/');

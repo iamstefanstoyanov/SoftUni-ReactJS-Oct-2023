@@ -7,8 +7,8 @@ export const getCurrentMovieComments = async (id) => {
       })
     ).json();
     return Object.values(data);
-  } catch (error) {
-    console.log(error);
+  } catch (e) {
+    alert(e.message);
   }
 };
 
@@ -17,8 +17,8 @@ export const getCurrentUserComments = async (userId) => {
     const url = `http://localhost:3030/data/comments?where=_ownerId%3D%22${userId}%22`;
     const data = await (await fetch(url)).json();
     return Object.values(data);
-  } catch (error) {
-    console.log(error);
+  } catch (e) {
+    alert(e.message);
   }
 };
 
@@ -36,8 +36,8 @@ export const deleteComment = async (id) => {
       })
     ).json();
     return data;
-  } catch (error) {
-    console.log(error);
+  } catch (e) {
+    alert(e.message);
   }
 };
 
@@ -62,8 +62,8 @@ export const addComment = async (username, inputs, title, id) => {
     });
     const result = await response.json();
     return result;
-  } catch (error) {
-    console.log(error);
+  } catch (e) {
+    alert(e.message);
   }
 };
 
@@ -76,8 +76,9 @@ export const getCurrentComment = async (id) => {
       })
     ).json();
     return data;
-  } catch (error) {
-    console.log(error);
+  } catch (e) {
+    alert(e.message);
+
   }
 };
 
@@ -102,7 +103,7 @@ export const editComment = async (newComment) => {
     });
     const result = await response.json();
     return result;
-  } catch (error) {
-    console.log(error);
+  } catch (e) {
+    alert(e.message);
   }
 };

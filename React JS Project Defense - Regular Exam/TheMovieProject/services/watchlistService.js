@@ -12,8 +12,8 @@ export const deleteFromWatchlist = async (id) => {
       })
     ).json();
     return data;
-  } catch (error) {
-    console.log(error);
+  } catch (e) {
+    alert(e.message);
   }
 };
 
@@ -40,8 +40,8 @@ export const addToWatchlist = async (data) => {
 
     const result = await response.json();
     return result;
-  } catch (error) {
-    console.log(error);
+  } catch (e) {
+    alert(e.message);
   }
 };
 
@@ -51,7 +51,7 @@ export const getCurrentUserWatchlist = async (userId) => {
   try {
     const data = await (await fetch(url)).json();
     return Object.values(data);
-  } catch (error) {
-    console.log(error);
+  } catch (e) {
+    alert(e.message);
   }
 };

@@ -13,12 +13,12 @@ export const login = async (email, password) => {
       }),
     });
     if (!response.ok) {
-      throw new Error('Login failed');
+      throw new Error('Wrong username or password!');
     }
     const data = await response.json();
     return data;
-  } catch (err) {
-    console.log(err);
+  } catch (e) {
+    alert(e.message);
   }
 };
 
@@ -36,13 +36,16 @@ export const register = async (username, password, email, imgUrl) => {
         imgUrl,
       }),
     });
+    if (response.status == 409) {
+      throw new Error('User with this email already exists');
+    }
     if (!response.ok) {
       throw new Error('Registration failed');
     }
     const data = await response.json();
     return data;
-  } catch (err) {
-    console.log(err);
+  } catch (e) {
+    alert(e.message);
   }
 };
 
