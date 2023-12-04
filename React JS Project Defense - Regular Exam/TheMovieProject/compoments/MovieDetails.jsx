@@ -25,7 +25,7 @@ export default function MovieDetails() {
   const [movieComments, setMovieComments] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [exists, setExists] = useState([]);
-  const { userId, username } = useContext(AuthContext);
+  const { userId, username, isAuth } = useContext(AuthContext);
   useEffect(() => {
     setIsLoading(true);
     getOneMovie(id).then(setMovieDetails);
@@ -124,39 +124,40 @@ export default function MovieDetails() {
                 <b>{Number(movieDetails.vote_average).toFixed(2)}</b> /10
               </p>
             </div>
-
-            <div className='movie-details-btns'>
-              {!movieIsInWatchlist && (
-                <>
-                  <p>Add to watchlist</p>
-                  <button
-                    type='button'
-                    onClick={addToWatchlistHandler}
-                    className='add-to-watchlist-btn'
-                  >
-                    <svg
-                      className='icon-add-to-watchlist'
-                      xmlns='http://www.w3.org/2000/svg'
-                      viewBox='0 0 512 512'
+            {isAuth && (
+              <div className='movie-details-btns'>
+                {!movieIsInWatchlist && (
+                  <>
+                    <p>Add to watchlist</p>
+                    <button
+                      type='button'
+                      onClick={addToWatchlistHandler}
+                      className='add-to-watchlist-btn'
                     >
-                      <path d='M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM232 344V280H168c-13.3 0-24-10.7-24-24s10.7-24 24-24h64V168c0-13.3 10.7-24 24-24s24 10.7 24 24v64h64c13.3 0 24 10.7 24 24s-10.7 24-24 24H280v64c0 13.3-10.7 24-24 24s-24-10.7-24-24z' />
+                      <svg
+                        className='icon-add-to-watchlist'
+                        xmlns='http://www.w3.org/2000/svg'
+                        viewBox='0 0 512 512'
+                      >
+                        <path d='M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM232 344V280H168c-13.3 0-24-10.7-24-24s10.7-24 24-24h64V168c0-13.3 10.7-24 24-24s24 10.7 24 24v64h64c13.3 0 24 10.7 24 24s-10.7 24-24 24H280v64c0 13.3-10.7 24-24 24s-24-10.7-24-24z' />
+                      </svg>
+                    </button>
+                  </>
+                )}
+                {movieIsInWatchlist && (
+                  <>
+                    <p>Added!</p>
+                    <svg
+                      className='added'
+                      xmlns='http://www.w3.org/2000/svg'
+                      viewBox='0 0 576 512'
+                    >
+                      <path d='M96 80c0-26.5 21.5-48 48-48H432c26.5 0 48 21.5 48 48V384H96V80zm313 47c-9.4-9.4-24.6-9.4-33.9 0l-111 111-47-47c-9.4-9.4-24.6-9.4-33.9 0s-9.4 24.6 0 33.9l64 64c9.4 9.4 24.6 9.4 33.9 0L409 161c9.4-9.4 9.4-24.6 0-33.9zM0 336c0-26.5 21.5-48 48-48H64V416H512V288h16c26.5 0 48 21.5 48 48v96c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V336z' />
                     </svg>
-                  </button>
-                </>
-              )}
-              {movieIsInWatchlist && (
-                <>
-                  <p>Added!</p>
-                  <svg
-                    className='added'
-                    xmlns='http://www.w3.org/2000/svg'
-                    viewBox='0 0 576 512'
-                  >
-                    <path d='M96 80c0-26.5 21.5-48 48-48H432c26.5 0 48 21.5 48 48V384H96V80zm313 47c-9.4-9.4-24.6-9.4-33.9 0l-111 111-47-47c-9.4-9.4-24.6-9.4-33.9 0s-9.4 24.6 0 33.9l64 64c9.4 9.4 24.6 9.4 33.9 0L409 161c9.4-9.4 9.4-24.6 0-33.9zM0 336c0-26.5 21.5-48 48-48H64V416H512V288h16c26.5 0 48 21.5 48 48v96c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V336z' />
-                  </svg>
-                </>
-              )}
-            </div>
+                  </>
+                )}
+              </div>
+            )}
           </div>
           {!movieComments.length == 0 ? (
             <div className='movie-comments-container'>
@@ -187,18 +188,24 @@ export default function MovieDetails() {
               </div>
             </div>
           )}
-          <div className='add-comment'>
-            <form className='form' onSubmit={submitForm}>
-              <textarea
-                type='text'
-                name={formKeys.text}
-                value={inputs[formKeys.text]}
-                onChange={onChangeInput}
-                placeholder='Comment......'
-              />
-              <input className='btn-submit' type='submit' value='Add Comment' />
-            </form>
-          </div>
+          {isAuth && (
+            <div className='add-comment'>
+              <form className='form' onSubmit={submitForm}>
+                <textarea
+                  type='text'
+                  name={formKeys.text}
+                  value={inputs[formKeys.text]}
+                  onChange={onChangeInput}
+                  placeholder='Comment......'
+                />
+                <input
+                  className='btn-submit'
+                  type='submit'
+                  value='Add Comment'
+                />
+              </form>
+            </div>
+          )}
         </>
       )}
     </>

@@ -28,10 +28,10 @@ function App() {
           <Route path='/login' element={<Login />} />
           <Route path='/signup' element={<SignUp />} />
           <Route path='*' element={<NotFound />} />
-          <Route element={<Guard/>}>
+          <Route path='/moviedetails/:id' element={<MovieDetails />} />
+          <Route element={<Guard />}>
             <Route path='/search' element={<Search />} />
             <Route path='/profile' element={<Profile />} />
-            <Route path='/moviedetails/:id' element={<MovieDetails />} />
             <Route path='/editcomment/:id' element={<EditComment />} />
             <Route path='/logout' element={<Logout />} />
           </Route>
