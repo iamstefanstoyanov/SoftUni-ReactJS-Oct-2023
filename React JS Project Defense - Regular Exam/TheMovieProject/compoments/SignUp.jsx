@@ -48,7 +48,7 @@ export default function SignUp() {
               value={inputs[formKeys.username]}
             />
             {errors?.username && (
-              <span style={{ color: 'red' }}>{errors.username}</span>
+              <span className='error'>{errors.username}</span>
             )}
             <input
               type='email'
@@ -57,9 +57,7 @@ export default function SignUp() {
               onChange={onChangeInput}
               value={inputs[formKeys.email]}
             />
-            {errors?.email && (
-              <span style={{ color: 'red' }}>{errors.email}</span>
-            )}
+            {errors?.email && <span className='error'>{errors.email}</span>}
             <input
               type='text'
               placeholder='Profile image URL'
@@ -67,9 +65,7 @@ export default function SignUp() {
               onChange={onChangeInput}
               value={inputs[formKeys.url]}
             />
-            {errors?.imgUrl && (
-              <span style={{ color: 'red' }}>{errors.imgUrl}</span>
-            )}
+            {errors?.imgUrl && <span className='error'>{errors.imgUrl}</span>}
             <input
               type='password'
               placeholder='Password'
@@ -78,7 +74,7 @@ export default function SignUp() {
               value={inputs[formKeys.password]}
             />
             {errors?.password && (
-              <span style={{ color: 'red' }}>{errors.password}</span>
+              <span className='error'>{errors.password}</span>
             )}
             <input
               type='password'
@@ -87,12 +83,15 @@ export default function SignUp() {
               onChange={onChangeInput}
               value={inputs[formKeys.repass]}
             />
-            {errors?.repass && (
-              <span style={{ color: 'red' }}>{errors.repass}</span>
-            )}
-            <input type='submit' className='btn-submit' value='SignUp' disabled={Object.keys(errors).length > 0}/>
+            {errors?.repass && <span className='error'>{errors.repass}</span>}
+            <input
+              type='submit'
+              className='btn-submit'
+              value='SignUp'
+              disabled={Object.keys(errors).length > 0}
+            />
             {Object.keys(errors).length > 0 && (
-              <span style={{ color: 'red' }}>Inavlid Form Data!</span>
+              <span className='error'>Inavlid Form Data!</span>
             )}
           </form>
         </div>
