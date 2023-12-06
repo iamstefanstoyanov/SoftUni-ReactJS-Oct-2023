@@ -1,17 +1,18 @@
 import { useEffect, useState } from 'react';
 
 import { getTopRatedAndNowPlaying } from '../services/moviesService';
+
 import Card from './Card';
 import Spinner from './Spinner';
 
 export default function HomePage() {
-  const [movies, setMoives] = useState([]);
+  const [movies, setMovies] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     setIsLoading(true);
     getTopRatedAndNowPlaying('top_rated')
-      .then(setMoives)
+      .then(setMovies)
       .finally(() => setIsLoading(false));
   }, []);
 

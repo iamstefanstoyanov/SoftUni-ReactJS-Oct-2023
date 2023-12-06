@@ -10,9 +10,7 @@ export default function ProfileWatchlist() {
   const [currentUserWatchlist, setCurrentUserWatchlist] = useState({});
 
   useEffect(() => {
-    getCurrentUserWatchlist(userId).then((data) => {
-      setCurrentUserWatchlist(data);
-    });
+    getCurrentUserWatchlist(userId).then(setCurrentUserWatchlist);
   }, []);
 
   const removeFromWatchlist = (e, id) => {

@@ -6,10 +6,11 @@ import {
   deleteComment,
   getCurrentUserComments,
 } from '../services/commentsService';
-import AuthContext from '../context/authContext';
 import { formatDate } from '../utils/dataUtils';
+import AuthContext from '../context/authContext';
 
 export default function ProfileComments() {
+  
   const [userComments, setUserComments] = useState({});
   const { userId } = useContext(AuthContext);
   const [isLoading, setIsLoading] = useState(false);

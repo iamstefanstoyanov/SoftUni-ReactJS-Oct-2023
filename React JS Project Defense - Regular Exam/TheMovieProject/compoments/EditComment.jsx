@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useParams,Link,useNavigate } from 'react-router-dom';
+
 import { editComment, getCurrentComment } from '../services/commentsService';
 
 import Spinner from './Spinner';
@@ -18,15 +19,15 @@ export default function EditComment() {
   useEffect(() => {
     setIsLoading(true);
     getCurrentComment(id)
-      .then((data) => {
-        setComment(data);
-      })
+      .then(setComment)
       .finally(() => setIsLoading(false));
   }, [id]);
+
   const editCommentHandler = async (newComment) => {
     await editComment(newComment);
     navigate('/profile');
   };
+  
   const { inputs, onChangeInput, submitForm } = useForm(
     editCommentHandler,
     comment

@@ -1,6 +1,7 @@
 /* eslint-disable react/prop-types */
-import { Link } from 'react-router-dom';
 import { useContext } from 'react';
+import { Link } from 'react-router-dom';
+
 import AuthContext from '../context/authContext';
 
 export default function Card({
@@ -13,7 +14,9 @@ export default function Card({
   remove,
   isProfile,
 }) {
+
   const { isAuth } = useContext(AuthContext);
+  
   return (
     <div className='card' key={id}>
       <img src={image} alt='Not Poster Available' />

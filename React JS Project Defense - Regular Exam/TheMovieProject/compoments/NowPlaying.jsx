@@ -5,13 +5,14 @@ import Card from './Card';
 import Spinner from './Spinner';
 
 export default function NowPlaying() {
-  const [movies, setMoives] = useState([]);
+
+  const [movies, setMovies] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     setIsLoading(true);
     getTopRatedAndNowPlaying('now_playing')
-      .then(setMoives)
+      .then(setMovies)
       .finally(() => setIsLoading(false));
   }, []);
 
@@ -19,7 +20,6 @@ export default function NowPlaying() {
     <>
       <h1>Now Playing</h1>
       {isLoading && <Spinner />}
-
       <div className='top-rated'>
         {movies.map((movie) => (
           <Card

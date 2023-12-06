@@ -2,7 +2,9 @@
 html {
     font: 14px/1.2 Inter, sans-serif;
 }
-
+body{
+    width:100vw;
+}
 body, input, textarea, button, option, select, table, th, td {
     font: inherit;
 }

@@ -14,7 +14,7 @@ const formKeys = {
 
 export default function SignUp() {
   const { registerHandler } = useContext(AuthContext);
-  //TODO....find more elegant solution
+
   const initialValues = useMemo(
     () => ({
       [formKeys.username]: '',

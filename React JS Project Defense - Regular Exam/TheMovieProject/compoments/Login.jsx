@@ -12,7 +12,6 @@ const formKeys = {
 export default function Login() {
   const { loginHandler } = useContext(AuthContext);
 
-  //TODO....find more elegant solution
   const initialValues = useMemo(
     () => ({
       [formKeys.email]: '',

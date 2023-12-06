@@ -2,9 +2,13 @@ import { useContext } from 'react';
 
 import ProfileComments from './ProfileComments';
 import ProfileWatchlist from './ProfileWatchlist';
+
 import AuthContext from '../context/authContext';
+
 import { formatDate } from '../utils/dataUtils';
+
 export default function Profile() {
+  
   const { username, email, imgUrl,registeredOn } = useContext(AuthContext);
   
   return (

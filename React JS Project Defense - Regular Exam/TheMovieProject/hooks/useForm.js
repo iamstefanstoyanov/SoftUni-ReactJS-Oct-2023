@@ -1,13 +1,16 @@
 import { useEffect, useState } from 'react';
 
 export default function useForm(submitHandler, initialValues) {
+
   const [inputs, setInputs] = useState(initialValues);
   const [errors, setErrors] = useState({});
+
   useEffect(() => {
     setInputs(initialValues);
   }, [initialValues]);
 
   const newState = { ...errors };
+
   const onChangeInput = (e) => {
     setInputs((state) => ({
       ...state,
@@ -57,6 +60,7 @@ export default function useForm(submitHandler, initialValues) {
     }
     setErrors(newState);
   };
+  
   const submitForm = (e) => {
     e.preventDefault();
     submitHandler(inputs);

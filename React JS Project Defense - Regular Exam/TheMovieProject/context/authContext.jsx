@@ -1,10 +1,11 @@
 import { createContext } from 'react';
-import { login, register } from '../services/authService';
 import { useNavigate } from 'react-router-dom';
+
+import { login, register } from '../services/authService';
 import useLocalStorage from '../hooks/useLocalStorage';
+
 const AuthContext = createContext();
 
-// eslint-disable-next-line react/prop-types
 export const AuthProvider = ({ children }) => {
   const [auth, setAuth] = useLocalStorage('auth',{});
   const navigate = useNavigate();

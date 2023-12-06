@@ -5,7 +5,9 @@ import Clock from './Clock';
 import AuthContext from '../context/authContext';
 
 export default function Navbar() {
+
   const { isAuth, username } = useContext(AuthContext);
+  
   return (
     <div className='navbar'>
       <div className='background'>
