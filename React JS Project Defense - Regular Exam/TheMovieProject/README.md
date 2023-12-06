@@ -48,7 +48,7 @@ click on local link path or paste it in your browser.
 ## Usage
 With this application guest users can view Top Rated, Now Playing, Catalog sections, as well as details and comments for every movie.
 
-Registered users have access to Search page which allows them to search for a movie by title.
+Registered users have access to "Search" page which allows them to search for a movie by title.
 
 Registered users can make their own "Watchlist" by clicking on "Add to watchlist" icon on movie details page and comment movies.
 
@@ -57,12 +57,13 @@ Registered users can make their own "Watchlist" by clicking on "Add to watchlist
 "Watchlist" can be modified by removing movies upon user request.
 
 Current user comments can be found and modified in "Profile" page.
+
 ## Acknowledgements
 
- - [Font Awesome](https://fontawesome.com/start)
+ - [The Movie Database](https://www.themoviedb.org/)
  - [Material UI](https://mui.com/)
+ - [Font Awesome](https://fontawesome.com/start)
  - [Google fonts](https://fonts.google.com/)
-
 
 
 ### Special thanks 
