@@ -20,20 +20,26 @@ const formKeys = {
 };
 
 export default function MovieDetails() {
+
   const { id } = useParams();
   const [movieDetails, setMovieDetails] = useState([]);
   const [movieComments, setMovieComments] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [exists, setExists] = useState([]);
   const { userId, username, isAuth } = useContext(AuthContext);
+
   useEffect(() => {
     setIsLoading(true);
+
     getOneMovie(id).then(setMovieDetails);
+
     getCurrentMovieComments(id).then(setMovieComments);
+
     getCurrentUserWatchlist(userId)
       .then(setExists)
       .catch((error) => console.log(error))
       .finally(() => setIsLoading(false));
+
   }, [id]);
 
   const addToWatchlistHandler = async () => {
@@ -46,17 +52,19 @@ export default function MovieDetails() {
     getCurrentMovieComments(id).then(setMovieComments);
     inputs[formKeys.text] = '';
   };
-  //TODO....find more elegant solution
+
   const initialMovieComments = useMemo(
     () => ({
       [formKeys.text]: '',
     }),
     []
   );
+
   const { inputs, onChangeInput, submitForm } = useForm(
     addCommentHandler,
     initialMovieComments
   );
+  
   const movieIsInWatchlist = exists.some((comment) => comment.id == id);
 
   return (
