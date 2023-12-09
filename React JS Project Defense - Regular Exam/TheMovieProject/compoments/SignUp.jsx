@@ -1,5 +1,6 @@
 import { useContext, useMemo } from 'react';
 import { Link } from 'react-router-dom';
+import { Navigate } from 'react-router-dom';
 
 import AuthContext from '../context/authContext';
 import useForm from '../hooks/useForm';
@@ -13,8 +14,12 @@ const formKeys = {
 };
 
 export default function SignUp() {
-  const { registerHandler } = useContext(AuthContext);
+  const { registerHandler,isAuth } = useContext(AuthContext);
 
+  if (isAuth) {
+    return <Navigate to='/'/>;
+  }
+  
   const initialValues = useMemo(
     () => ({
       [formKeys.username]: '',
