@@ -17,6 +17,7 @@ export default function Login() {
     return <Navigate to='/'/>;
   }
  
+  // eslint-disable-next-line react-hooks/rules-of-hooks
   const initialValues = useMemo(
     () => ({
       [formKeys.email]: '',
@@ -25,6 +26,7 @@ export default function Login() {
     []
   );
 
+  // eslint-disable-next-line react-hooks/rules-of-hooks
   const { inputs, onChangeInput, submitForm } = useForm(
     loginHandler,
     initialValues

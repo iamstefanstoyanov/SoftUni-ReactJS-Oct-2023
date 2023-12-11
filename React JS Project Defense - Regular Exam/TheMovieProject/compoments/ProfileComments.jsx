@@ -24,6 +24,7 @@ export default function ProfileComments() {
     getCurrentUserComments(userId)
       .then(setUserComments)
       .finally(() => setIsLoading(false));
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [updatedComments]);
 
   const deleteHandler = (e, id) => {

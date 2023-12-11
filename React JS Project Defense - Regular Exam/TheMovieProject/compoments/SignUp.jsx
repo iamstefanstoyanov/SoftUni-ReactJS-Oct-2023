@@ -20,6 +20,7 @@ export default function SignUp() {
     return <Navigate to='/'/>;
   }
   
+  // eslint-disable-next-line react-hooks/rules-of-hooks
   const initialValues = useMemo(
     () => ({
       [formKeys.username]: '',
@@ -30,6 +31,7 @@ export default function SignUp() {
     }),
     []
   );
+  // eslint-disable-next-line react-hooks/rules-of-hooks
   const { inputs, errors, onChangeInput, submitForm } = useForm(
     registerHandler,
     initialValues

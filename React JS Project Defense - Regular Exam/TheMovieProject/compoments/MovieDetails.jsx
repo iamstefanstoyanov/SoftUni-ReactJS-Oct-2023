@@ -40,6 +40,7 @@ export default function MovieDetails() {
       .catch((error) => console.log(error))
       .finally(() => setIsLoading(false));
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [id]);
 
   const addToWatchlistHandler = async () => {

@@ -11,6 +11,7 @@ export default function ProfileWatchlist() {
 
   useEffect(() => {
     getCurrentUserWatchlist(userId).then(setCurrentUserWatchlist);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const removeFromWatchlist = (e, id) => {

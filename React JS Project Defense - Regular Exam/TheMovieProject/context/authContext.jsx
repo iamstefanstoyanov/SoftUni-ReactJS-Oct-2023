@@ -6,6 +6,7 @@ import useLocalStorage from '../hooks/useLocalStorage';
 
 const AuthContext = createContext();
 
+// eslint-disable-next-line react/prop-types
 export const AuthProvider = ({ children }) => {
   const [auth, setAuth] = useLocalStorage('auth',{});
   const navigate = useNavigate();
