@@ -72,7 +72,7 @@ Project deplpoyed on Firebase, demo available here.
  - [The Movie Site](https://themoviesite-8a4a7.web.app/)
 
 ### Next steps
--[]still working on responsive CSS
--[]adding "Similar" section for every movie
--[]adding more filters in "Search" page
--[]found a bug when adding first comment
+ - []still working on responsive CSS
+ - []adding "Similar" section for every movie
+ - []adding more filters in "Search" page
+ - []found a bug when adding first comment
