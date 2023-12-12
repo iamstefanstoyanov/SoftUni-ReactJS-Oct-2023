@@ -1,7 +1,6 @@
-import { useEffect, useState, useContext, useMemo } from 'react';
+import { useEffect, useState, useContext } from 'react';
 import { Link } from 'react-router-dom';
 
-import Spinner from './Spinner';
 import {
   deleteComment,
   getCurrentUserComments,
@@ -13,19 +12,12 @@ export default function ProfileComments() {
   
   const [userComments, setUserComments] = useState({});
   const { userId } = useContext(AuthContext);
-  const [isLoading, setIsLoading] = useState(false);
-
-  let updatedComments = useMemo(() => {
-    setUserComments(userComments);
-  }, [userComments]);
 
   useEffect(() => {
-    setIsLoading(true);
     getCurrentUserComments(userId)
       .then(setUserComments)
-      .finally(() => setIsLoading(false));
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [updatedComments]);
+  }, []);
 
   const deleteHandler = (e, id) => {
     deleteComment(id);
@@ -34,7 +26,6 @@ export default function ProfileComments() {
 
   return (
     <>
-      {isLoading && <Spinner />}
       {!userComments.length == 0 ? (
         <>
           {userComments?.map((c) => (

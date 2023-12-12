@@ -13,9 +13,13 @@ export const getCurrentMovieComments = async (id) => {
 };
 
 export const getCurrentUserComments = async (userId) => {
+  const url = `${import.meta.env.VITE_API_URL}/data/comments?where=_ownerId%3D%22${userId}%22`;
   try {
-    const url = `${import.meta.env.VITE_API_URL}/data/comments?where=_ownerId%3D%22${userId}%22`;
-    const data = await (await fetch(url)).json();
+    const data = await (
+      await fetch(url, {
+        method: 'GET',
+      })
+    ).json();
     return Object.values(data);
   } catch (e) {
     alert(e.message);
