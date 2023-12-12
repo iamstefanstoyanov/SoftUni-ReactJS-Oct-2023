@@ -1,5 +1,5 @@
 export const getCurrentMovieComments = async (id) => {
-  const url = `http://localhost:3030/data/comments?where=movieId%3D%22${id}%22`;
+  const url = `${import.meta.env.VITE_API_URL}/data/comments?where=movieId%3D%22${id}%22`;
   try {
     const data = await (
       await fetch(url, {
@@ -14,7 +14,7 @@ export const getCurrentMovieComments = async (id) => {
 
 export const getCurrentUserComments = async (userId) => {
   try {
-    const url = `http://localhost:3030/data/comments?where=_ownerId%3D%22${userId}%22`;
+    const url = `${import.meta.env.VITE_API_URL}/data/comments?where=_ownerId%3D%22${userId}%22`;
     const data = await (await fetch(url)).json();
     return Object.values(data);
   } catch (e) {
@@ -23,7 +23,7 @@ export const getCurrentUserComments = async (userId) => {
 };
 
 export const deleteComment = async (id) => {
-  const url = `http://localhost:3030/data/comments/${id}`;
+  const url = `${import.meta.env.VITE_API_URL}/data/comments/${id}`;
   const token = JSON.parse(localStorage.getItem('auth')).accessToken;
 
   try {
@@ -42,7 +42,7 @@ export const deleteComment = async (id) => {
 };
 
 export const addComment = async (username, inputs, title, id) => {
-  const url = `http://localhost:3030/data/comments`;
+  const url = `${import.meta.env.VITE_API_URL}/data/comments`;
   const token = JSON.parse(localStorage.getItem('auth')).accessToken;
 
   try {
@@ -68,7 +68,7 @@ export const addComment = async (username, inputs, title, id) => {
 };
 
 export const getCurrentComment = async (id) => {
-  const url = `http://localhost:3030/data/comments/${id}`;
+  const url = `${import.meta.env.VITE_API_URL}/data/comments/${id}`;
   try {
     const data = await (
       await fetch(url, {
@@ -83,7 +83,7 @@ export const getCurrentComment = async (id) => {
 };
 
 export const editComment = async (newComment) => {
-  const url = `http://localhost:3030/data/comments/${newComment._id}`;
+  const url = `${import.meta.env.VITE_API_URL}/data/comments/${newComment._id}`;
   const token = JSON.parse(localStorage.getItem('auth')).accessToken;
 
   try {

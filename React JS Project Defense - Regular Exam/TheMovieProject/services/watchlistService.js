@@ -1,5 +1,5 @@
 export const deleteFromWatchlist = async (id) => {
-  const url = `http://localhost:3030/data/watchlists/${id}`;
+  const url = `${import.meta.env.VITE_API_URL}/data/watchlists/${id}`;
 
   const token = JSON.parse(localStorage.getItem('auth')).accessToken;
 
@@ -22,7 +22,7 @@ export const deleteFromWatchlist = async (id) => {
 };
 
 export const addToWatchlist = async (data) => {
-  const url = `http://localhost:3030/data/watchlists`;
+  const url = `${import.meta.env.VITE_API_URL}/data/watchlists`;
 
   const token = JSON.parse(localStorage.getItem('auth')).accessToken;
 
@@ -53,7 +53,7 @@ export const addToWatchlist = async (data) => {
 };
 
 export const getCurrentUserWatchlist = async (userId) => {
-  const url = `http://localhost:3030/data/watchlists?where=_ownerId%3D%22${userId}%22`;
+  const url = `${import.meta.env.VITE_API_URL}/data/watchlists?where=_ownerId%3D%22${userId}%22`;
 
   try {
 

@@ -1,4 +1,4 @@
-const url = `http://localhost:3030/users`;
+const url = `${import.meta.env.VITE_API_URL}/users`;
 
 export const login = async (email, password) => {
   try {
