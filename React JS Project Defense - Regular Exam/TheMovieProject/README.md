@@ -43,8 +43,6 @@ Run the project
 click on local link path or paste it in your browser.
 
 
-
-
 ## Usage
 With this application guest users can view Top Rated, Now Playing, Catalog sections, as well as details and comments for every movie.
 
@@ -73,3 +71,8 @@ Current user comments can be found and modified in "Profile" page.
 Project deplpoyed on Firebase, demo available here.
  - [The Movie Site](https://themoviesite-8a4a7.web.app/)
 
+### Next steps
+-[]still working on responsive CSS
+-[]adding "Similar" section for every movie
+-[]adding more filters in "Search" page
+-[]found a bug when adding first comment
