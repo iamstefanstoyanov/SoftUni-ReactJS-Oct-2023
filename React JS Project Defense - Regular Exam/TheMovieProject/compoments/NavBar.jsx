@@ -1,6 +1,7 @@
 import { useContext } from 'react';
 import { Link } from 'react-router-dom';
 
+import logo from '../images/movie_logo.png';
 import Clock from './Clock';
 import AuthContext from '../context/authContext';
 
@@ -15,7 +16,7 @@ export default function Navbar() {
       </div>
       <div className='navbar-main'>
         <div className='logo'>
-          <img className='logo_png' src='./images/movie_logo.png' />
+          <img className='logo_png' src={logo} />
           <span className='logo-text'>The Movie Site</span>
         </div>
         <ul className='top-navbar-btns'>

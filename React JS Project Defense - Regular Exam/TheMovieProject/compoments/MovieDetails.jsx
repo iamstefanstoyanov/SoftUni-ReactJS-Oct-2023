@@ -48,8 +48,8 @@ export default function MovieDetails() {
     getCurrentUserWatchlist(userId).then(setExists);
   };
 
-  const addCommentHandler = (inputs) => {
-    addComment(username, inputs, movieDetails.title, id);
+  const addCommentHandler = async (inputs) => {
+    await addComment(username, inputs, movieDetails.title, id);
     getCurrentMovieComments(id).then(setMovieComments);
     inputs[formKeys.text] = '';
   };
